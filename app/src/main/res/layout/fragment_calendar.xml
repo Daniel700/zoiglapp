@@ -1,0 +1,107 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:stretchColumns="1" >
+
+        <TableRow android:layout_marginBottom="5dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:text="@string/currentDate" />
+
+            <TextView
+                android:id="@+id/textView_Date"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" />
+        </TableRow>
+
+        <TableRow android:layout_marginBottom="5dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:text="@string/chooseMonth" />
+
+            <Spinner
+                android:id="@+id/spinner_months"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:entries="@array/spinner_months">
+            </Spinner>
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/divider"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"/>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="5dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_calendar"
+            android:visibility="gone"
+            android:scrollbars="vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_refresh_white_36dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:onClick="refreshEventList"
+            android:alpha="0.8"
+            app:backgroundTint="?attr/colorPrimaryDark"
+            app:elevation="6dp"
+            app:layout_anchor="@+id/recycler_view_calendar"
+            app:layout_anchorGravity="bottom|right|end"
+            />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="LARGE_BANNER"
+        ads:adUnitId="@string/banner_calendar" />
+
+</LinearLayout>

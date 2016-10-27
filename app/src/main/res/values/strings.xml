@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Zoigl Kalender</string>
+
+
+    <!--        STRINGS IN CODE         -->
+    <string name="echterZoigl">Echter Zoigl vom Kommunbrauer</string>
+    <string name="connectionException">Bitte mit dem Internet verbinden und erneut laden</string>
+
+    
+    <!--        STRINGS IN XML          -->
+    <string name="chooseMonth">Monat auswählen: </string>
+    <string name="currentDate">Aktuelles Datum: </string>
+
+
+    
+    <!--            AD_MOB LIVE              -->
+    <string name="banner_calendar">ca-app-pub-8931744357161861/9426312630</string>
+    <string name="interstitial">ca-app-pub-8931744357161861/1903045837</string>
+
+    <!--            AD_MOB TEST              -->
+    <string name="banner_calendar_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_test">ca-app-pub-3940256099942544/1033173712</string>
+
+
+    <string-array name="spinner_months">
+        <item>Januar</item>
+        <item>Februar</item>
+        <item>März</item>
+        <item>April</item>
+        <item>Mai</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>August</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Dezember</item>
+        <item>Alle</item>
+    </string-array>
+
+</resources>
