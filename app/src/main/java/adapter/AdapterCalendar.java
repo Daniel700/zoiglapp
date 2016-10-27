@@ -25,15 +25,15 @@ import model.Event;
  */
 public class AdapterCalendar extends RecyclerView.Adapter<AdapterCalendar.ViewHolder>{
 
-    ArrayList<Event> list;
-    Context context;
+    private ArrayList<Event> list;
+    private Context context;
 
     public AdapterCalendar(ArrayList<Event> events, Context ctx){
         this.list = events;
         this.context = ctx;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.cardText_Name)
         protected TextView textName;
@@ -52,7 +52,6 @@ public class AdapterCalendar extends RecyclerView.Adapter<AdapterCalendar.ViewHo
            super(v);
            ButterKnife.bind(this, v);
        }
-
    }
 
 

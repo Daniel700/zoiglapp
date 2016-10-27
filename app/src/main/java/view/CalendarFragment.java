@@ -1,4 +1,4 @@
-package dbm.zoigl_kalender;
+package view;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -18,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
@@ -30,56 +29,38 @@ import adapter.AdapterCalendar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
+import dbm.zoigl_kalender.R;
+import misc.Settings;
 import model.DataHolder;
 
 
 public class CalendarFragment extends Fragment {
 
-    @BindView(R.id.recycler_view_calendar)
-    RecyclerView recyclerView;
-    @BindView(R.id.fab_refresh)
-    FloatingActionButton fab;
-    @BindView(R.id.spinner_months)
-    Spinner spinnerMonths;
-    @BindView(R.id.textView_Date)
-    TextView textView_Date;
-    @BindView(R.id.progressBar)
-    ProgressBar progressBar;
-    @BindView(R.id.adView_banner)
-    AdView adView;
+    @BindView(R.id.recycler_view_calendar)  RecyclerView recyclerView;
+    @BindView(R.id.fab_refresh)             FloatingActionButton fab;
+    @BindView(R.id.spinner_months)          Spinner spinnerMonths;
+    @BindView(R.id.textView_Date)           TextView textView_Date;
+    @BindView(R.id.progressBar)             ProgressBar progressBar;
+    @BindView(R.id.adView_banner)           AdView adView;
     private InterstitialAd interstitialAd;
-
-    private Context appContext;
+    private Unbinder unbinder;
     private AdapterCalendar adapterCalendar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appContext = getContext().getApplicationContext();
         new FetchDataTask().execute();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
-        ButterKnife.bind(this, rootView);
-
-        loadInterstitialAd();
-
-        if (Config.AD_MOB_PRODUCTION_MODE){
-            //Production Mode
-            AdRequest adRequest = new AdRequest.Builder().build();
-            adView.loadAd(adRequest);
-        }
-        else {
-            //Test Mode
-            AdRequest adRequest1 = new AdRequest.Builder().addTestDevice("2D18A580DC26C325F086D6FB9D84F765").build();
-            adView.loadAd(adRequest1);
-        }
+        unbinder = ButterKnife.bind(this, rootView);
+        loadAds();
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
         textView_Date.setText(simpleDateFormat.format(new Date()));
 
@@ -92,7 +73,7 @@ public class CalendarFragment extends Fragment {
                 }
                 loadInterstitialAd();
 
-                adapterCalendar = new AdapterCalendar(DataHolder.getInstance(appContext).getListPerMonth(position), getContext());
+                adapterCalendar = new AdapterCalendar(DataHolder.getInstance().getListPerMonth(position), getContext());
                 recyclerView.setAdapter(adapterCalendar);
             }
 
@@ -119,11 +100,28 @@ public class CalendarFragment extends Fragment {
     }
 
 
-    public void loadInterstitialAd(){
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+
+
+
+
+    private void loadAds(){
+        loadInterstitialAd();
+        loadBannerAd();
+    }
+
+    private void loadInterstitialAd(){
         //Initialize Interstitial Ad
         interstitialAd = new InterstitialAd(getContext());
 
-        if (Config.AD_MOB_PRODUCTION_MODE){
+        if (Settings.AD_MOB_PRODUCTION_MODE){
             interstitialAd.setAdUnitId(getString(R.string.interstitial));
             AdRequest adRequest2 = new AdRequest.Builder().build();
             interstitialAd.loadAd(adRequest2);
@@ -135,6 +133,25 @@ public class CalendarFragment extends Fragment {
             interstitialAd.loadAd(adRequest3);
         }
     }
+
+    private void loadBannerAd(){
+        if (Settings.AD_MOB_PRODUCTION_MODE){
+            //Production Mode
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
+        }
+        else {
+            //Test Mode
+            AdRequest adRequest1 = new AdRequest.Builder().addTestDevice("2D18A580DC26C325F086D6FB9D84F765").build();
+            adView.loadAd(adRequest1);
+        }
+    }
+
+
+
+
+
+
 
 
 
@@ -159,8 +176,8 @@ public class CalendarFragment extends Fragment {
 
             //Load Data from DynamoDB
             try {
-                DataHolder.getInstance(appContext).establishDBConnection();
-                DataHolder.getInstance(appContext).fetchAllData();
+                DataHolder.getInstance().establishDBConnection();
+                DataHolder.getInstance().fetchAllData();
                 Thread.sleep(500);
             }
             catch (Exception e){
@@ -174,9 +191,12 @@ public class CalendarFragment extends Fragment {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
+
             if (error != null && progressBar != null){
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(getContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
+                Log.e("Error22", error.toString());
+                Log.e("Error22", error.getMessage());
             }
 
             if (recyclerView != null && progressBar != null){

@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import view.CalendarFragment;
+
 public class LauncherActivity extends AppCompatActivity {
 
     @Override
@@ -20,7 +22,6 @@ public class LauncherActivity extends AppCompatActivity {
         Fragment fragment = new CalendarFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment).commit();
-
 
     }
 

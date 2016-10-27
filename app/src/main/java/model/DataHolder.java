@@ -1,5 +1,6 @@
 package model;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
@@ -13,42 +14,33 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 
-import dbm.zoigl_kalender.Config;
+import misc.Settings;
 
 /**
  * Created by Daniel on 11.02.2016.
  */
-public class DataHolder{
+public class DataHolder extends Application{
 
     private static DataHolder singleton = null;
-    AmazonDynamoDBClient ddbClient;
-    DynamoDBMapper mapper;
-    private Context context;
-
+    private AmazonDynamoDBClient ddbClient;
+    private DynamoDBMapper mapper;
     private PaginatedList<Event> resultList = null;
     private ArrayList<Event> eventList = new ArrayList<>();
 
-    public static DataHolder getInstance(Context ctx){
+
+    public static DataHolder getInstance(){
         if (singleton == null){
-            singleton = new DataHolder(ctx);
+            singleton = new DataHolder();
         }
         return singleton;
     }
 
-    private DataHolder(Context c){
-        this.context = c;
-    }
 
     public void establishDBConnection(){
-        // Initialize the Amazon Cognito credentials provider
-        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
-                context,
-                Config.IDENTITY_POOL_ID, // Identity Pool ID
-                Regions.EU_WEST_1 // Region
-        );
+        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(getApplicationContext(), Settings.IDENTITY_POOL_ID, Regions.EU_WEST_1);
 
         ddbClient = new AmazonDynamoDBClient(credentialsProvider);
-        ddbClient.setEndpoint(Config.AWS_ENDPOINT);
+        ddbClient.setEndpoint(Settings.AWS_ENDPOINT);
         mapper = new DynamoDBMapper(ddbClient);
     }
 
@@ -89,7 +81,6 @@ public class DataHolder{
         }
 
         return new ArrayList<>();
-
     }
 
 }
