@@ -1,13 +1,11 @@
 package view;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +31,7 @@ import butterknife.Unbinder;
 import dbm.zoigl_kalender.R;
 import misc.Settings;
 import model.DataHolder;
+import model.DatabaseHandler;
 
 
 public class CalendarFragment extends Fragment {
@@ -176,8 +175,8 @@ public class CalendarFragment extends Fragment {
 
             //Load Data from DynamoDB
             try {
-                DataHolder.getInstance().establishDBConnection();
-                DataHolder.getInstance().fetchAllData();
+                DatabaseHandler handler = new DatabaseHandler(getContext());
+                handler.downloadDataAndSaveToDataHolder();
                 Thread.sleep(500);
             }
             catch (Exception e){
@@ -195,8 +194,6 @@ public class CalendarFragment extends Fragment {
             if (error != null && progressBar != null){
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(getContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
-                Log.e("Error22", error.toString());
-                Log.e("Error22", error.getMessage());
             }
 
             if (recyclerView != null && progressBar != null){

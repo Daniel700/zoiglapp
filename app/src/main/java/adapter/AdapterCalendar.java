@@ -35,18 +35,12 @@ public class AdapterCalendar extends RecyclerView.Adapter<AdapterCalendar.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.cardText_Name)
-        protected TextView textName;
-        @BindView(R.id.cardText_Date)
-        protected TextView textDate;
-        @BindView(R.id.cardText_Days)
-        protected TextView textDays;
-        @BindView(R.id.cardText_Location)
-        protected TextView textLocation;
-        @BindView(R.id.cardText_realZoigl)
-        protected TextView textRealZoigl;
-        @BindView(R.id.card_view)
-        protected CardView cardView;
+        @BindView(R.id.cardText_Name)       protected TextView textName;
+        @BindView(R.id.cardText_Date)       protected TextView textDate;
+        @BindView(R.id.cardText_Days)       protected TextView textDays;
+        @BindView(R.id.cardText_Location)   protected TextView textLocation;
+        @BindView(R.id.cardText_realZoigl)  protected TextView textRealZoigl;
+        @BindView(R.id.card_view)           protected CardView cardView;
 
        public ViewHolder(View v){
            super(v);

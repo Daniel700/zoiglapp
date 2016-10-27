@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by Daniel on 10.02.2016.
  */
 @DynamoDBTable(tableName = "Zoigl_Kalender")
-public class Event implements Comparable {
+public class Event implements Comparable<Event> {
 
     private Integer id;
     private Date startDate;
@@ -19,7 +19,6 @@ public class Event implements Comparable {
     private boolean realZoigl;
     private String location;
     private String name;
-
 
 
     @DynamoDBAttribute(attributeName = "Days")
@@ -86,16 +85,10 @@ public class Event implements Comparable {
     }
 
 
+
     @Override
-    public int compareTo(Object another) {
-
-        Event tmp = (Event) another;
-/*
-        if (this.getId().intValue() == tmp.getId().intValue())
-            return 0;
-*/
-
-        return this.getStartDate().compareTo(tmp.getStartDate());
-        //return this.getId()<tmp.getId()?-1:1;
+    public int compareTo(Event another) {
+        return this.getStartDate().compareTo(another.getStartDate());
     }
+
 }
