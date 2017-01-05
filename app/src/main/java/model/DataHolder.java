@@ -9,8 +9,7 @@ import java.util.Calendar;
 public class DataHolder {
 
     private static DataHolder singleton = new DataHolder();
-    private ArrayList<Event> eventList;
-
+    private ArrayList<Event> eventList = new ArrayList<>();
 
     public static DataHolder getInstance(){
         return singleton;
@@ -20,9 +19,17 @@ public class DataHolder {
     }
 
 
+
+
+
+
+
+
+
     public void saveEventsToDataHolder(ArrayList<Event> events){
         this.eventList = events;
     }
+
 
     public ArrayList<Event> getListPerMonth(int month){
 

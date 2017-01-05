@@ -1,0 +1,45 @@
+Name            +   street          +   city                +   openingHours    +   realZoigl   +   rating  +   url                         +   owner           +   phoneNumber     +   mobilePhoneNumber   +   email
+
+Alter Pfarrhof  +   Pfarrplatz 14   +   92660 Altenstadt    +   ?               +   true        +   0       +   www.pfarrhof-altenstadt.de  +   Anni Loistl     +   ?               +   0176/23367755       +   ?
+Am Moierhof 
+Bahler  
+Beim Brucksaler 
+Beim Gloser 
+Beim Heigl 
+Beim Meislbeck 
+Beim Roidl 
+Beim Strehern 
+Binner  
+D'Eisenbahn  
+Dameradl  
+Fiedlschneider  
+Haner  
+Hartwich-Zoigl  
+Käck'n  
+Kramer-Wolf  
+Lingl-Zoigl  
+Lugert  
+Oppl  
+Postgassl  
+Schafferhof  
+Schlosshof-Zoigl  
+Schoilmichl  
+Schwoazhansl-Zoigl  
+Stefflwirt  
+Stromhias  
+Teicher  
+Wagerer-Zoigl  
+Wolfadl  
+Wolframstub'n  
+Zoiglbauer  
+Zoiglfest am Anger
+Zum Binnerlindl 
+Zum Boderfuchs 
+Zum Glöckerlbauer 
+Zum Mundl 
+Zum Posterer 
+Zum Rechersimer 
+Zum Roud'n 
+Zum Vinzenz 
+Zum Waldhauser 
+Tag der Kommunbrauer

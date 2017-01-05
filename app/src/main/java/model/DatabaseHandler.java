@@ -1,6 +1,7 @@
 package model;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
@@ -8,6 +9,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBScanExpr
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.PaginatedList;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +31,8 @@ public class DatabaseHandler {
     }
 
 
-    public void downloadDataAndSaveToDataHolder() {
+
+    public void loadEventsAndSaveToDataHolder() {
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
         PaginatedList<Event> resultList = mapper.scan(Event.class, scanExpression);
         resultList.loadAllResults();
@@ -49,5 +52,33 @@ public class DatabaseHandler {
         mapper = new DynamoDBMapper(ddbClient);
     }
 
+
+
+    public void loadReviews(String tableName, String tavernName){
+
+    }
+
+    public void saveReview(String tableName, Review review){
+        mapper.save(review);
+    }
+
+    public void loadTaverns(String tableName){
+
+    }
+
+    public void updateTavern(String tavernName){
+        //1. load specific tavern
+        //2. update rating number
+        //3. save
+    }
+
+    public void saveTaverns(Tavern tavern){
+       // mapper.batchSave(taverns);
+        mapper.save(tavern);
+    }
+
+    public void saveOpeningDate(OpeningDate openingDate){
+        mapper.save(openingDate);
+    }
 
 }

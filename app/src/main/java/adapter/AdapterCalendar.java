@@ -17,7 +17,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import dbm.zoigl_kalender.R;
+import main.zoiglKalender.R;
 import model.Event;
 
 /**

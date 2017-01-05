@@ -28,7 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import dbm.zoigl_kalender.R;
+import main.zoiglKalender.R;
 import misc.Settings;
 import model.DataHolder;
 import model.DatabaseHandler;
@@ -176,7 +176,7 @@ public class CalendarFragment extends Fragment {
             //Load Data from DynamoDB
             try {
                 DatabaseHandler handler = new DatabaseHandler(getContext());
-                handler.downloadDataAndSaveToDataHolder();
+                handler.loadEventsAndSaveToDataHolder();
                 Thread.sleep(500);
             }
             catch (Exception e){
