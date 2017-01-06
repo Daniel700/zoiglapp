@@ -1,11 +1,325 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_detailed"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
-    <TextView
-        android:text="TextView"
+    <include layout="@layout/toolbar"/>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:orientation="horizontal"
+        android:layout_margin="3dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bewertungen insgesamt:"/>
+
+        <RatingBar
+            android:id="@+id/detail_ratingBarSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rating="5"
+            android:stepSize="0.1"
+            android:numStars="5"
+            android:isIndicator="true"
+            style="?android:attr/ratingBarStyleSmall"/>
+
+        <TextView
+            android:id="@+id/detail_ratingBarSumText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp"
+            android:text="(14)"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="3dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deine Bewertung:"/>
+
+        <RatingBar
+            android:id="@+id/detail_ratingBarOwn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rating="5"
+            android:stepSize="0.1"
+            android:numStars="5"
+            android:isIndicator="true"
+            style="?android:attr/ratingBarStyleSmall"/>
+
+    </LinearLayout>
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+        <include layout="@layout/divider_thin_grey" />
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageButton
+            android:id="@+id/detail_button_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.54"
+            android:background="@drawable/ic_schedule_black_36dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/detail_hours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/detail_button_hours"
+            android:layout_toEndOf="@+id/detail_button_hours"
+            android:text="Öffnungszeiten"/>
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+        <include layout="@layout/divider_thin_grey" />
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageButton
+            android:id="@+id/detail_button_navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.54"
+            android:background="@drawable/ic_navigation_black_36dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="startNavigation"/>
+
+        <TextView
+            android:id="@+id/detail_street"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/detail_button_navigation"
+            android:layout_toEndOf="@+id/detail_button_navigation"
+            android:text="Straße"/>
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+        <include layout="@layout/divider_thin_grey" />
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageButton
+            android:id="@+id/detail_button_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.54"
+            android:background="@drawable/ic_person_black_36dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/detail_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/detail_button_person"
+            android:layout_toEndOf="@+id/detail_button_person"
+            android:text="Inhaber"/>
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+        <include layout="@layout/divider_thin_grey" />
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageButton
+            android:id="@+id/detail_button_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.54"
+            android:background="@drawable/ic_phone_black_36dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/detail_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/detail_button_call"
+            android:layout_toEndOf="@+id/detail_button_call"
+            android:text="Telefonnummer"/>
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+        <include layout="@layout/divider_thin_grey" />
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageButton
+            android:id="@+id/detail_button_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.54"
+            android:background="@drawable/ic_mail_black_36dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/detail_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/detail_button_mail"
+            android:layout_toEndOf="@+id/detail_button_mail"
+            android:text="E-Mail Adresse"/>
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+        <include layout="@layout/divider_thin_grey" />
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageButton
+            android:id="@+id/detail_button_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.54"
+            android:background="@drawable/ic_public_black_36dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/detail_website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/detail_button_website"
+            android:layout_toEndOf="@+id/detail_button_website"
+            android:text="www.testadresse.de"/>
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+        <include layout="@layout/divider_thin_grey" />
+    </FrameLayout>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_reviews"
+            android:visibility="gone"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_thumbs_up_down_white_36dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:onClick="createReview"
+            android:alpha="0.8"
+            app:backgroundTint="?attr/colorPrimaryDark"
+            app:elevation="6dp"
+            app:layout_anchor="@+id/recycler_view_reviews"
+            app:layout_anchorGravity="bottom|right|end" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+    <!--
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_gravity="center"
+        android:theme="@style/MaterialButtonChange"
+        android:text="Rezension verfassen" />
+-->
+
+
 </LinearLayout>

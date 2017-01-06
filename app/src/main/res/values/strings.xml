@@ -22,6 +22,7 @@
     <string name="interstitial_test">ca-app-pub-3940256099942544/1033173712</string>
 
 
+    <string name="spinnerTitle">Monat auswählen</string>
     <string-array name="spinner_months">
         <item>Januar</item>
         <item>Februar</item>
