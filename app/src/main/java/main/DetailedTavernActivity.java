@@ -2,10 +2,9 @@ package main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BaseTransientBottomBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,10 +14,15 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import adapter.AdapterReviews;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import main.zoiglKalender.R;
+import model.Review;
+import view.ReviewDialog;
 
 /**
  * Created by Daniel on 06.01.2017.
@@ -60,6 +64,14 @@ public class DetailedTavernActivity extends AppCompatActivity{
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        //ToDo Dummy Data...
+        ArrayList<Review> tmpList = new ArrayList<>();
+        tmpList.add(new Review());
+        tmpList.add(new Review());
+        tmpList.add(new Review());
+        AdapterReviews adapterReviews = new AdapterReviews(tmpList, getApplicationContext());
+        recyclerView.setAdapter(adapterReviews);
+
     }
 
 
@@ -75,7 +87,9 @@ public class DetailedTavernActivity extends AppCompatActivity{
 
     @OnClick(R.id.fab_review)
     public void createReview(){
-        Snackbar.make(layout, "Action triggered", Snackbar.LENGTH_LONG).show();
+        FragmentManager fm = getSupportFragmentManager();
+        ReviewDialog reviewDialog = new ReviewDialog();
+        reviewDialog.show(fm, "review-dialog");
     }
 
 }

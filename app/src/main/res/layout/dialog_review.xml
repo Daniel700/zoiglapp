@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:padding="5dp"
+        android:text="Rezension verfassen"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/dialog_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="Name"
+        app:counterEnabled="true"
+        app:counterMaxLength="40">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/dialog_edit_text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:maxLength="40" />
+    </android.support.design.widget.TextInputLayout>
+
+    <RatingBar
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stepSize="0.25"
+        android:numStars="5" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="Beschreibung (Optional)"
+        app:counterEnabled="true"
+        app:counterMaxLength="500">
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:minLines="6"
+            android:maxLines="8"
+            android:maxLength="500" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:weightSum="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center"
+            android:theme="@style/MaterialButtonPositive"
+            android:layout_weight="0.5"
+            android:text="Bewerten" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center"
+            android:theme="@style/MaterialButtonNegative"
+            android:layout_weight="0.5"
+            android:text="Abbrechen" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

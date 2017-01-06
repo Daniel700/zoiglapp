@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bewertungen insgesamt:"/>
+            android:text="Bewertungen insgesamt: "/>
 
         <RatingBar
             android:id="@+id/detail_ratingBarSum"
@@ -51,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Deine Bewertung:"/>
+            android:text="Deine Bewertung: "/>
 
         <RatingBar
             android:id="@+id/detail_ratingBarOwn"
@@ -287,7 +287,6 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view_reviews"
-            android:visibility="gone"
             android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -297,9 +296,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_thumbs_up_down_white_36dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
             android:onClick="createReview"
             android:alpha="0.8"
             app:backgroundTint="?attr/colorPrimaryDark"
