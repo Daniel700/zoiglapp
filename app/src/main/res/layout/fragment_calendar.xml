@@ -4,66 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp">
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:stretchColumns="1" >
+        android:stretchColumns="*" >
 
-        <TableRow android:layout_marginBottom="5dp">
+        <TableRow android:layout_marginBottom="5dp" android:layout_weight="1">
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="end|center_vertical"
+                android:layout_gravity="end|center"
                 android:text="@string/currentDate" />
 
             <TextView
                 android:id="@+id/textView_Date"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center" />
+                android:text="test"
+                android:layout_gravity="center" />
         </TableRow>
 
-        <TableRow android:layout_marginBottom="5dp">
+        <TableRow android:layout_marginBottom="5dp" android:layout_weight="1">
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_gravity="end|center_vertical"
                 android:gravity="end|center_vertical"
-                android:backgroundTint="@color/colorPrimary"
                 android:text="@string/chooseMonth" />
 
             <Spinner
                 android:id="@+id/spinner_months"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:textAlignment="center"
+                android:layout_gravity="center"
                 android:entries="@array/spinner_months">
             </Spinner>
         </TableRow>
 
-        <TableRow android:layout_marginBottom="5dp">
+        <TableRow android:layout_marginBottom="5dp" android:layout_weight="1">
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="end|center_vertical"
+                android:layout_gravity="end|center_vertical"
+                android:gravity="center_vertical"
                 android:text="Nur aktive Termine anzeigen:" />
 
             <CheckBox
                 android:id="@+id/activeDatesCheckBox"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center" />
         </TableRow>
 
     </TableLayout>
@@ -71,7 +66,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/divider"/>
 
     <ProgressBar

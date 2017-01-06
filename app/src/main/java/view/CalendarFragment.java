@@ -19,9 +19,11 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import adapter.AdapterCalendar;
 import butterknife.BindView;
@@ -60,8 +62,8 @@ public class CalendarFragment extends Fragment {
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        textView_Date.setText(simpleDateFormat.format(new Date()));
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        textView_Date.setText(dateFormat.format(new Date()));
 
         spinnerMonths.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

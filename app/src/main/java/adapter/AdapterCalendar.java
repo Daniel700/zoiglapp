@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,6 +21,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import main.DetailedTavernActivity;
 import main.zoiglKalender.R;
 import model.Event;
 
@@ -34,13 +39,13 @@ public class AdapterCalendar extends RecyclerView.Adapter<AdapterCalendar.ViewHo
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-
-        @BindView(R.id.cardText_Name)       protected TextView textName;
-        @BindView(R.id.cardText_Date)       protected TextView textDate;
-        @BindView(R.id.cardText_Days)       protected TextView textDays;
-        @BindView(R.id.cardText_Location)   protected TextView textLocation;
-        @BindView(R.id.cardText_realZoigl)  protected TextView textRealZoigl;
         @BindView(R.id.card_view)           protected CardView cardView;
+        @BindView(R.id.cardText_Name)       protected TextView textName;
+        @BindView(R.id.cardText_startDate)  protected TextView textStartDate;
+        @BindView(R.id.cardText_startDay)   protected TextView textStartDay;
+        @BindView(R.id.cardText_endDate)    protected TextView textEndDate;
+        @BindView(R.id.cardText_endDay)     protected TextView textEndDay;
+        @BindView(R.id.cardText_location)   protected TextView textLocation;
 
        public ViewHolder(View v){
            super(v);
@@ -58,15 +63,15 @@ public class AdapterCalendar extends RecyclerView.Adapter<AdapterCalendar.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
+
         Event event = list.get(position);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        String StringStartDate = simpleDateFormat.format(event.getStartDate());
-        String StringEndDate = simpleDateFormat.format(event.getEndDate());
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        String StringStartDate = dateFormat.format(event.getStartDate());
+        String StringEndDate = dateFormat.format(event.getEndDate());
         String StringCompleteDate = StringStartDate + " bis " + StringEndDate;
 
         holder.textName.setText(event.getName());
-        holder.textDate.setText(StringCompleteDate);
-        holder.textDays.setText(event.getDays());
         holder.textLocation.setText(event.getLocation());
 
         Date currentDate = new Date();
@@ -83,19 +88,21 @@ public class AdapterCalendar extends RecyclerView.Adapter<AdapterCalendar.ViewHo
         cal.set(Calendar.MINUTE,59);
         endDate = cal.getTime();
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailedTavernActivity.class);
+                context.startActivity(intent);
+            }
+        });
+/*
         if ((currentDate.compareTo(startDate) > 0) && (currentDate.compareTo(endDate) < 0)) {
             holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
         }
         else {
             holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.cardViewStandard));
         }
-
-        if (event.isRealZoigl()){
-            holder.textRealZoigl.setText(context.getString(R.string.echterZoigl));
-        }
-        else {
-            holder.textRealZoigl.setText("");
-        }
+*/
 
     }
 

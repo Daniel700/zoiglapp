@@ -32,6 +32,7 @@ public class DatabaseHandler {
 
 
 
+    @Deprecated
     public void loadEventsAndSaveToDataHolder() {
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
         PaginatedList<Event> resultList = mapper.scan(Event.class, scanExpression);

@@ -25,12 +25,13 @@ public class DataHolder {
 
 
 
-
+    @Deprecated
     public void saveEventsToDataHolder(ArrayList<Event> events){
         this.eventList = events;
     }
 
 
+    @Deprecated
     public ArrayList<Event> getListPerMonth(int month){
 
             Calendar cal = Calendar.getInstance();

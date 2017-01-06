@@ -9,6 +9,7 @@ import java.util.Date;
 /**
  * Created by Daniel on 10.02.2016.
  */
+@Deprecated
 @DynamoDBTable(tableName = "Zoigl_Kalender")
 public class Event implements Comparable<Event> {
 

@@ -18,6 +18,8 @@ public class Tavern {
     @DynamoDBAttribute
     private String street;
     @DynamoDBAttribute
+    private int postalCode;
+    @DynamoDBAttribute
     private String city;
     @DynamoDBAttribute
     private String openingHours;
@@ -46,6 +48,15 @@ public class Tavern {
 
 
 
+
+
+    public int getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(int postalCode) {
+        this.postalCode = postalCode;
+    }
 
     public double getRatingCount() {
         return ratingCount;
