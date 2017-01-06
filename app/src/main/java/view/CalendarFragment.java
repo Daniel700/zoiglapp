@@ -72,7 +72,7 @@ public class CalendarFragment extends Fragment {
                 }
                 loadInterstitialAd();
 
-                adapterCalendar = new AdapterCalendar(DataHolder.getInstance().getListPerMonth(position), getContext());
+                adapterCalendar = new AdapterCalendar(DataHolder.getInstance().getListPerMonth(position));
                 recyclerView.setAdapter(adapterCalendar);
             }
 

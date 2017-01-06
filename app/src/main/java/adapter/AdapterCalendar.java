@@ -16,6 +16,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import main.DetailedTavernActivity;
 import main.zoiglKalender.R;
 import model.Event;
@@ -26,11 +27,9 @@ import model.Event;
 public class AdapterCalendar extends RecyclerView.Adapter<AdapterCalendar.ViewHolder>{
 
     private ArrayList<Event> list;
-    private Context context;
 
-    public AdapterCalendar(ArrayList<Event> events, Context ctx){
+    public AdapterCalendar(ArrayList<Event> events){
         this.list = events;
-        this.context = ctx;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -41,11 +40,20 @@ public class AdapterCalendar extends RecyclerView.Adapter<AdapterCalendar.ViewHo
         @BindView(R.id.cardText_endDate)    protected TextView textEndDate;
         @BindView(R.id.cardText_endDay)     protected TextView textEndDay;
         @BindView(R.id.cardText_location)   protected TextView textLocation;
+        private Context context;
 
        public ViewHolder(View v){
            super(v);
            ButterKnife.bind(this, v);
+           this.context = v.getContext();
        }
+
+        @OnClick(R.id.card_view)
+        public void detailViewTavern(){
+            Intent intent = new Intent(context, DetailedTavernActivity.class);
+            context.startActivity(intent);
+        }
+
    }
 
 
@@ -83,13 +91,6 @@ public class AdapterCalendar extends RecyclerView.Adapter<AdapterCalendar.ViewHo
         cal.set(Calendar.MINUTE,59);
         endDate = cal.getTime();
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, DetailedTavernActivity.class);
-                context.startActivity(intent);
-            }
-        });
 /*
         if ((currentDate.compareTo(startDate) > 0) && (currentDate.compareTo(endDate) < 0)) {
             holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));

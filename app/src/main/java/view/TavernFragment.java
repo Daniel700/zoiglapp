@@ -42,7 +42,7 @@ public class TavernFragment extends Fragment {
         arrayList.add(tavern);
         arrayList.add(tavern1);
 
-        adapterTaverns = new AdapterTaverns(arrayList, getContext());
+        adapterTaverns = new AdapterTaverns(arrayList);
         recyclerView.setAdapter(adapterTaverns);
 
         return rootView;
