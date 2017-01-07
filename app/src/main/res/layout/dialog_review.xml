@@ -66,6 +66,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/dialog_button_positive"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -73,9 +74,11 @@
             android:layout_gravity="center"
             android:theme="@style/MaterialButtonPositive"
             android:layout_weight="0.5"
+            android:onClick="pressedButtonPositive"
             android:text="Bewerten" />
 
         <Button
+            android:id="@+id/dialog_button_negative"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -83,6 +86,7 @@
             android:layout_gravity="center"
             android:theme="@style/MaterialButtonNegative"
             android:layout_weight="0.5"
+            android:onClick="pressedButtonNegative"
             android:text="Abbrechen" />
 
 

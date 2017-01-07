@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -60,7 +61,12 @@ public class DetailedTavernActivity extends AppCompatActivity{
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Zoiglname");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
@@ -91,5 +97,16 @@ public class DetailedTavernActivity extends AppCompatActivity{
         ReviewDialog reviewDialog = new ReviewDialog();
         reviewDialog.show(fm, "review-dialog");
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

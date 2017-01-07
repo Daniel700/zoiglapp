@@ -7,9 +7,13 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,6 +22,8 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.NativeExpressAdView;
+import com.google.android.gms.ads.formats.NativeAdView;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -41,7 +47,8 @@ public class CalendarFragment extends Fragment {
     @BindView(R.id.spinner_months)          Spinner spinnerMonths;
     @BindView(R.id.textView_Date)           TextView textView_Date;
     @BindView(R.id.progressBar)             ProgressBar progressBar;
-    @BindView(R.id.adView_banner)           AdView adView;
+   // @BindView(R.id.adView_banner)           AdView adView;
+    @BindView(R.id.activeDatesCheckBox)     CheckBox activeDatesCheckBox;
     private InterstitialAd interstitialAd;
     private Unbinder unbinder;
     private AdapterCalendar adapterCalendar;
@@ -49,6 +56,7 @@ public class CalendarFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         new FetchDataTask().execute();
     }
 
@@ -99,14 +107,43 @@ public class CalendarFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_calendar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.menu_filter:
+                return true;
+        }
+
+        return false;
+    }
+
+
+    @OnClick(R.id.activeDatesCheckBox)
+    public void showActiveDates(){
+
+        //ToDo use Adapter with only active dates
+        if (activeDatesCheckBox.isChecked()){
+            Toast.makeText(getContext(), "Aktive Termine", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(getContext(), "Alle Termine", Toast.LENGTH_LONG).show();
+        }
+
+    }
 
 
 
@@ -134,6 +171,7 @@ public class CalendarFragment extends Fragment {
     }
 
     private void loadBannerAd(){
+        /*
         if (Settings.AD_MOB_PRODUCTION_MODE){
             //Production Mode
             AdRequest adRequest = new AdRequest.Builder().build();
@@ -144,6 +182,7 @@ public class CalendarFragment extends Fragment {
             AdRequest adRequest1 = new AdRequest.Builder().addTestDevice("2D18A580DC26C325F086D6FB9D84F765").build();
             adView.loadAd(adRequest1);
         }
+        */
     }
 
 

@@ -61,7 +61,8 @@
                 android:id="@+id/activeDatesCheckBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:onClick="showActiveDates"/>
         </TableRow>
 
     </TableLayout>
@@ -82,14 +83,11 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="5dp">
+        android:layout_weight="1">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view_calendar"
             android:scrollbars="vertical"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -110,12 +108,24 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="LARGE_BANNER"
-        ads:adUnitId="@string/banner_calendar" />
-
-</LinearLayout>
+    <!--
+       <com.google.android.gms.ads.AdView
+           xmlns:ads="http://schemas.android.com/apk/res-auto"
+           android:id="@+id/adView_banner"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           ads:adSize="LARGE_BANNER"
+           ads:adUnitId="@string/banner_calendar" />
+   -->
+       <!--
+        <com.google.android.gms.ads.NativeExpressAdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            ads:adUnitId="ca-app-pub-8931744357161861/4618691436"
+            ads:adSize="200x80">
+        </com.google.android.gms.ads.NativeExpressAdView>
+     -->
+ </LinearLayout>
