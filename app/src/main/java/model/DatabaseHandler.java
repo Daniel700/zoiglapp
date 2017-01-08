@@ -39,11 +39,20 @@ public class DatabaseHandler {
 
 
 
-    public void loadReviews(String tableName, String tavernName){
+    public ArrayList<Review> loadReviews(){
+        //ToDo load reviews for certain Tavern
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+        PaginatedList<Review> resultList = mapper.scan(Review.class, scanExpression);
+        resultList.loadAllResults();
 
+        ArrayList<Review> reviews = new ArrayList<>();
+        reviews.addAll(resultList);
+        Collections.sort(reviews);
+
+        return reviews;
     }
 
-    public void saveReview(String tableName, Review review){
+    public void saveReview(Review review){
         mapper.save(review);
     }
 

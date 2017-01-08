@@ -55,7 +55,7 @@ public class AdapterReviews extends RecyclerView.Adapter<AdapterReviews.ViewHold
 
     @Override
     public void onBindViewHolder(AdapterReviews.ViewHolder holder, int position) {
-
+            //ToDo set review content from xml...
     }
 
 

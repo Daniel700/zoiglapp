@@ -110,12 +110,14 @@ public class TavernFragment extends Fragment {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(getContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
             }
-            else
+            else{
                 progressBar.setVisibility(View.GONE);
                 recyclerView.setVisibility(View.VISIBLE);
 
-            AdapterTaverns adapterTaverns = new AdapterTaverns(tavernArrayList);
-            recyclerView.setAdapter(adapterTaverns);
+                AdapterTaverns adapterTaverns = new AdapterTaverns(tavernArrayList);
+                recyclerView.setAdapter(adapterTaverns);
+            }
+
         }
     }
 

@@ -1,7 +1,10 @@
 package main;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
@@ -10,29 +13,36 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import adapter.AdapterReviews;
+import adapter.InterfaceCommunicator;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import main.zoiglKalender.R;
+import model.DatabaseHandler;
 import model.Review;
 import model.Tavern;
 import view.ReviewDialog;
+
+import static java.security.AccessController.getContext;
 
 /**
  * Created by Daniel on 06.01.2017.
  */
 
-public class DetailedTavernActivity extends AppCompatActivity{
+public class DetailedTavernActivity extends AppCompatActivity implements InterfaceCommunicator {
 
-    @BindView(R.id.activity_detailed) LinearLayout layout;
+    @BindView(R.id.coordinator_layout_detail_tavern) CoordinatorLayout coordinatorLayout;
     @BindView(R.id.toolbar) Toolbar toolbar;
 
     @BindView(R.id.detail_button_navigation) ImageButton button_navigation;
@@ -51,6 +61,7 @@ public class DetailedTavernActivity extends AppCompatActivity{
     @BindView(R.id.detail_website) TextView textView_website;
 
     @BindView(R.id.recycler_view_reviews) RecyclerView recyclerView;
+    @BindView(R.id.progressBar_reviewList) ProgressBar progressBar;
     @BindView(R.id.fab_review) FloatingActionButton fab_review;
 
     private Tavern tavern;
@@ -70,19 +81,15 @@ public class DetailedTavernActivity extends AppCompatActivity{
 
         //ToDo Handle Review Data...
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        ArrayList<Review> tmpList = new ArrayList<>();
-        tmpList.add(new Review());
-        tmpList.add(new Review());
-        tmpList.add(new Review());
-        AdapterReviews adapterReviews = new AdapterReviews(tmpList, getApplicationContext());
-        recyclerView.setAdapter(adapterReviews);
+        new LoadReviewsTask().execute();
+
 
     }
 
 
     @OnClick(R.id.detail_button_navigation)
     public void startNavigation(){
-        Snackbar.make(layout, "Action triggered", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(coordinatorLayout, "Action triggered", Snackbar.LENGTH_LONG).show();
     }
 
 
@@ -102,6 +109,15 @@ public class DetailedTavernActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void sendRequestCode(int requestCode) {
+        if (requestCode == 1){
+            Snackbar.make(coordinatorLayout, "Bewertung wurde erfolgreich an den Server gesendet", Snackbar.LENGTH_LONG).show();
+        }
+    }
+
 
     public void initToolbar(){
         setSupportActionBar(toolbar);
@@ -125,6 +141,60 @@ public class DetailedTavernActivity extends AppCompatActivity{
         textView_mail.setText(tavern.getEmail());
         textView_website.setText(tavern.getUrl());
     }
+
+
+
+    public Tavern getTavern(){
+        return tavern;
+    }
+
+
+
+
+
+    class LoadReviewsTask extends AsyncTask<Void, Void, Void> {
+        Exception error;
+        ArrayList<Review> reviewList;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            recyclerView.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                DatabaseHandler handler = new DatabaseHandler(getApplicationContext());
+                reviewList = handler.loadReviews();
+            }
+            catch (Exception e){
+                error = e;
+            }
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            if (error != null)
+                //ToDo change error message
+                Toast.makeText(getApplicationContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
+            else{
+                progressBar.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
+
+                AdapterReviews adapterReviews = new AdapterReviews(reviewList, getApplicationContext());
+                recyclerView.setAdapter(adapterReviews);
+            }
+
+
+        }
+    }
+
+
 
 
 }

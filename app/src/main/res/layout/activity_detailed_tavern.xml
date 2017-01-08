@@ -279,8 +279,15 @@
         <include layout="@layout/divider_thin_grey" />
     </FrameLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar_reviewList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"/>
 
     <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout_detail_tavern"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp">
