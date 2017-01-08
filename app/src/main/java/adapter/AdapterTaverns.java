@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +73,7 @@ public class AdapterTaverns extends RecyclerView.Adapter<AdapterTaverns.ViewHold
         holder.name.setText(currentTavern.getName());
         holder.location.setText(currentTavern.getStreet() + ", " + String.valueOf(currentTavern.getPostalCode()) + " " + currentTavern.getCity());
         holder.ratingBar.setRating(currentTavern.getRating());
-        holder.ratingBarText.setText("(" + String.valueOf(currentTavern.getRatingCount()) + ")");
+        holder.ratingBarText.setText("(" + String.valueOf(Math.round(currentTavern.getRatingCount())) + ")");
         if (currentTavern.isRealZoigl())
             holder.realZoigl.setText("Echter Zoigl vom Kommunbrauer");
         else

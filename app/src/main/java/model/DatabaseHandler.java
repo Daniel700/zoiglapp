@@ -1,7 +1,6 @@
 package model;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
@@ -9,7 +8,6 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBScanExpr
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.PaginatedList;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,14 +29,13 @@ public class DatabaseHandler {
     }
 
 
-
-
     public void establishDBConnection(){
         CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(context, Settings.IDENTITY_POOL_ID, Regions.EU_WEST_1);
         AmazonDynamoDBClient ddbClient = new AmazonDynamoDBClient(credentialsProvider);
         ddbClient.setEndpoint(Settings.AWS_ENDPOINT);
         mapper = new DynamoDBMapper(ddbClient);
     }
+
 
 
 
@@ -59,6 +56,9 @@ public class DatabaseHandler {
         ArrayList<OpeningDate> dates = new ArrayList<>();
         dates.addAll(resultList);
         Collections.sort(dates);
+
+        DataHolder.getInstance().saveCalendar(dates);
+        loadTaverns();
         return dates;
     }
 
@@ -71,6 +71,8 @@ public class DatabaseHandler {
         ArrayList<Tavern> taverns = new ArrayList<>();
         taverns.addAll(resultList);
         Collections.sort(taverns);
+
+        DataHolder.getInstance().saveTaverns(taverns);
         return taverns;
     }
 

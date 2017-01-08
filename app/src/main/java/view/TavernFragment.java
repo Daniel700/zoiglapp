@@ -3,6 +3,7 @@ package view;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,15 +14,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 import adapter.AdapterTaverns;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import main.zoiglKalender.R;
 import model.DatabaseHandler;
 import model.Tavern;
@@ -32,9 +33,9 @@ import model.Tavern;
 
 public class TavernFragment extends Fragment {
 
-    @BindView(R.id.recycler_view_taverns) RecyclerView recyclerView;
-
-    private AdapterTaverns adapterTaverns;
+    @BindView(R.id.recycler_view_taverns)   RecyclerView recyclerView;
+    @BindView(R.id.progressBar_tavernList)  ProgressBar progressBar;
+    @BindView(R.id.fab_refresh_taverns)     FloatingActionButton fab;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,6 @@ public class TavernFragment extends Fragment {
         ButterKnife.bind(this, rootView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        //ToDo save to DataHolder before request?
         new FetchTavernDataTask().execute();
 
         return rootView;
@@ -78,39 +78,52 @@ public class TavernFragment extends Fragment {
 
 
     class FetchTavernDataTask extends AsyncTask<Void, Void, Void> {
-
         Exception error;
         ArrayList<Tavern> tavernArrayList;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
+            recyclerView.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected Void doInBackground(Void... params) {
-
             //Load Data from DynamoDB
             try {
                 DatabaseHandler handler = new DatabaseHandler(getContext());
                 tavernArrayList = handler.loadTaverns();
+                Thread.sleep(500);
             }
             catch (Exception e){
                 error = e;
             }
-
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            adapterTaverns = new AdapterTaverns(tavernArrayList);
+
+            if (error != null){
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
+            }
+            else
+                progressBar.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
+
+            AdapterTaverns adapterTaverns = new AdapterTaverns(tavernArrayList);
             recyclerView.setAdapter(adapterTaverns);
         }
     }
 
 
+
+    @OnClick(R.id.fab_refresh_taverns)
+    public void refreshTavernList(){
+        new FetchTavernDataTask().execute();
+    }
 
 }

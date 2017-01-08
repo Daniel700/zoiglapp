@@ -92,14 +92,14 @@
             android:layout_height="match_parent" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_refresh"
+            android:id="@+id/fab_refresh_calendar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_refresh_white_36dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="72dp"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="12dp"
-            android:onClick="refreshEventList"
+            android:onClick="refreshCalendarList"
             android:alpha="0.8"
             app:backgroundTint="?attr/colorPrimaryDark"
             app:elevation="6dp"
@@ -108,24 +108,5 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <!--
-       <com.google.android.gms.ads.AdView
-           xmlns:ads="http://schemas.android.com/apk/res-auto"
-           android:id="@+id/adView_banner"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           ads:adSize="LARGE_BANNER"
-           ads:adUnitId="@string/banner_calendar" />
-   -->
-       <!--
-        <com.google.android.gms.ads.NativeExpressAdView
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            ads:adUnitId="ca-app-pub-8931744357161861/4618691436"
-            ads:adSize="200x80">
-        </com.google.android.gms.ads.NativeExpressAdView>
-     -->
+
  </LinearLayout>

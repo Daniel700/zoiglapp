@@ -45,6 +45,7 @@
                 android:orientation="horizontal">
 
                 <RatingBar
+                    android:id="@+id/card_view_calendar_rating_bar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:rating="5"

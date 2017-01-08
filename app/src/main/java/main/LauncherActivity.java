@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import java.util.TimeZone;
+
 import adapter.ImplPagerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,11 +28,12 @@ public class LauncherActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         verifyInstallation();
-
         ImplPagerAdapter pagerAdapter = new ImplPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        //This app works with UTC Times due to synchronisation with DynamoDB
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
     }
 
 

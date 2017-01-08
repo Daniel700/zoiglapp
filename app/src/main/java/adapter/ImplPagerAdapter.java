@@ -2,6 +2,7 @@ package adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import view.CalendarFragment;
@@ -12,7 +13,7 @@ import view.TavernFragment;
  */
 
 public class ImplPagerAdapter extends FragmentStatePagerAdapter {
-    final private int NUMBER_OF_TABS = 2;
+    private final int NUMBER_OF_TABS = 2;
     private String tabTitles[] = new String[]{"Termine", "Zoiglstuben"};
 
     public ImplPagerAdapter(FragmentManager fm) {

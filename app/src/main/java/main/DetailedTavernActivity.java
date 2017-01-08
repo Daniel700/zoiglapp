@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -116,7 +115,15 @@ public class DetailedTavernActivity extends AppCompatActivity{
     }
 
     public void setContent(){
-        //ToDo set Text Views
+        ratingBarSum.setRating(tavern.getRating());
+        ratingBarOwn.setRating(3);      //ToDo getRating of sharedPreferences
+        textView_ratingBarSum.setText("(" + Math.round(tavern.getRatingCount()) + ")");
+        textView_hours.setText(tavern.getOpeningHours().replace("-", "\n"));
+        textView_street.setText(tavern.getStreet() + ", " + String.valueOf(tavern.getPostalCode()) + " " + tavern.getCity());
+        textView_person.setText(tavern.getOwner());
+        textView_call.setText("Telefon: " + tavern.getPhoneNumber() + "\n Mobil: " + tavern.getMobilePhoneNumber());
+        textView_mail.setText(tavern.getEmail());
+        textView_website.setText(tavern.getUrl());
     }
 
 

@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.HashMap;
 
 /**
  * Created by Daniel on 11.02.2016.
@@ -9,7 +9,8 @@ import java.util.Calendar;
 public class DataHolder {
 
     private static DataHolder singleton = new DataHolder();
-    private ArrayList<Event> eventList = new ArrayList<>();
+    private HashMap<String, Tavern> tavernHashMap = new HashMap<String, Tavern>();
+    private ArrayList<OpeningDate> calendar = new ArrayList<>();
 
     public static DataHolder getInstance(){
         return singleton;
@@ -22,34 +23,23 @@ public class DataHolder {
 
 
 
-
-
-
-    @Deprecated
-    public void saveEventsToDataHolder(ArrayList<Event> events){
-        this.eventList = events;
+    public void saveCalendar(ArrayList<OpeningDate> list){
+        this.calendar = list;
     }
 
 
-    @Deprecated
-    public ArrayList<Event> getListPerMonth(int month){
-
-            Calendar cal = Calendar.getInstance();
-            Calendar cal2 = Calendar.getInstance();
-            ArrayList<Event> tmpList = new ArrayList<>();
-
-            if (month == 12) {
-                return eventList;
-            }
-            else {
-                for (Event e : eventList) {
-                    cal.setTime(e.getStartDate());
-                    cal2.setTime(e.getEndDate());
-                    if (cal.get(Calendar.MONTH) == month || cal2.get(Calendar.MONTH) == month)
-                        tmpList.add(e);
-                }
-                return tmpList;
-            }
+    public void saveTaverns(ArrayList<Tavern> taverns){
+        for (Tavern tavern: taverns){
+            tavernHashMap.put(tavern.getName(), tavern);
+        }
     }
 
+
+    public HashMap<String, Tavern> getTavernHashMap() {
+        return tavernHashMap;
+    }
+
+    public ArrayList<OpeningDate> getCalendar() {
+        return calendar;
+    }
 }

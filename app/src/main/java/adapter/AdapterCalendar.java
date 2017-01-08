@@ -1,7 +1,6 @@
 package adapter;
 
 import android.content.Context;
-import android.provider.SyncStateContract;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,11 +13,12 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 import main.zoiglKalender.R;
 import misc.Constants;
+import model.DataHolder;
 import model.OpeningDate;
+import model.Tavern;
 
 
 /**
@@ -29,11 +29,11 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private static final int AD_POSITION = 5;
     private static final int ITEM_TYPE_NORMAL = 0;
     private static final int ITEM_TYPE_AD = 1;
-    private ArrayList<OpeningDate> list;
+    protected static ArrayList<OpeningDate> calendarList;
     private Context context;
 
     public AdapterCalendar(ArrayList<OpeningDate> dates){
-        this.list = dates;
+        this.calendarList = dates;
     }
 
     @Override
@@ -54,9 +54,9 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == ITEM_TYPE_NORMAL){
 
-            OpeningDate event = list.get(getRealPosition(position));
+            OpeningDate event = calendarList.get(getRealPosition(position));
 
-            TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+            //TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
             Calendar cal = Calendar.getInstance();
             DateFormat dateFormat = DateFormat.getDateInstance();
             Date startDate = event.getStartDate();
@@ -71,7 +71,15 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
             ((CalendarViewHolder)holder).textEndDate.setText(dateFormat.format(endDate));
             ((CalendarViewHolder)holder).textStartDay.setText(startDay);
             ((CalendarViewHolder)holder).textEndDay.setText(endDay);
-            ((CalendarViewHolder)holder).textLocation.setText("Location!!!");
+
+            Tavern tv = DataHolder.getInstance().getTavernHashMap().get(event.getTavernName());
+            if (tv != null){
+                ((CalendarViewHolder)holder).textLocation.setText(tv.getPostalCode() + " " + tv.getCity());
+                ((CalendarViewHolder)holder).ratingBar.setRating(tv.getRating());
+            }
+            else
+                ((CalendarViewHolder)holder).ratingBar.setRating(0);
+
 
             Date currentDate = new Date();
             if ((currentDate.compareTo(startDate) > 0) && (currentDate.compareTo(endDate) < 0))
@@ -90,10 +98,10 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public int getItemCount() {
         int additionalContent = 0;
-        if (list.size() > 0 && list.size() > AD_POSITION) {
-            additionalContent = list.size() / AD_POSITION;
+        if (calendarList.size() > 0 && calendarList.size() > AD_POSITION) {
+            additionalContent = calendarList.size() / AD_POSITION;
         }
-        return list.size() + additionalContent;
+        return calendarList.size() + additionalContent;
     }
 
     @Override
@@ -104,7 +112,7 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return ITEM_TYPE_NORMAL;
     }
 
-    private int getRealPosition(int position) {
+    protected static int getRealPosition(int position) {
         if (position % AD_POSITION != 0 && position > AD_POSITION){
             return position - (position/AD_POSITION);
         }
