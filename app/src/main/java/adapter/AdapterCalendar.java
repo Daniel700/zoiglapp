@@ -1,7 +1,9 @@
 package adapter;
 
+import android.content.Context;
+import android.provider.SyncStateContract;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +14,12 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import main.zoiglKalender.R;
-import model.Event;
+import misc.Constants;
+import model.OpeningDate;
+
 
 /**
  * Created by Daniel on 10.02.2016.
@@ -24,20 +29,23 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private static final int AD_POSITION = 5;
     private static final int ITEM_TYPE_NORMAL = 0;
     private static final int ITEM_TYPE_AD = 1;
-    private ArrayList<Event> list;
+    private ArrayList<OpeningDate> list;
+    private Context context;
 
-    public AdapterCalendar(ArrayList<Event> events){
-        this.list = events;
+    public AdapterCalendar(ArrayList<OpeningDate> dates){
+        this.list = dates;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if(viewType == ITEM_TYPE_AD) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.frame_adview, parent, false);
+            this.context = parent.getContext();
             return new AdViewHolder(view);
         }
         else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_calendar, parent, false);
+            this.context = parent.getContext();
             return new CalendarViewHolder(view);
         }
     }
@@ -45,44 +53,38 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == ITEM_TYPE_NORMAL){
-            Log.e("POS", String.valueOf(position));
-            Log.e("SIZE", String.valueOf(list.size()));
-            Log.e("REAL", String.valueOf(getRealPosition(position)));
-            Event event = list.get(getRealPosition(position));
+
+            OpeningDate event = list.get(getRealPosition(position));
+
+            TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+            Calendar cal = Calendar.getInstance();
             DateFormat dateFormat = DateFormat.getDateInstance();
-            String StringStartDate = dateFormat.format(event.getStartDate());
-            String StringEndDate = dateFormat.format(event.getEndDate());
-            String StringCompleteDate = StringStartDate + " bis " + StringEndDate;
-
-            ((CalendarViewHolder)holder).textName.setText(event.getName());
-            ((CalendarViewHolder)holder).textLocation.setText(event.getLocation());
-
-            Date currentDate = new Date();
             Date startDate = event.getStartDate();
             Date endDate = event.getEndDate();
-
-            Calendar cal = Calendar.getInstance();
             cal.setTime(startDate);
-            cal.set(Calendar.HOUR_OF_DAY,0);
-            startDate = cal.getTime();
-
+            String startDay = Constants.WEEKDAYS[cal.get(Calendar.DAY_OF_WEEK)];
             cal.setTime(endDate);
-            cal.set(Calendar.HOUR_OF_DAY, 23);
-            cal.set(Calendar.MINUTE,59);
-            endDate = cal.getTime();
+            String endDay = Constants.WEEKDAYS[cal.get(Calendar.DAY_OF_WEEK)];
+
+            ((CalendarViewHolder)holder).textName.setText(event.getTavernName());
+            ((CalendarViewHolder)holder).textStartDate.setText(dateFormat.format(startDate));
+            ((CalendarViewHolder)holder).textEndDate.setText(dateFormat.format(endDate));
+            ((CalendarViewHolder)holder).textStartDay.setText(startDay);
+            ((CalendarViewHolder)holder).textEndDay.setText(endDay);
+            ((CalendarViewHolder)holder).textLocation.setText("Location!!!");
+
+            Date currentDate = new Date();
+            if ((currentDate.compareTo(startDate) > 0) && (currentDate.compareTo(endDate) < 0))
+                ((CalendarViewHolder)holder).textName.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
+            else
+                ((CalendarViewHolder)holder).textName.setBackgroundColor(ContextCompat.getColor(context, R.color.calendarHeadlineNegative));
+
         }
         else if (getItemViewType(position) == ITEM_TYPE_AD){
             AdRequest adRequest = new AdRequest.Builder().addTestDevice("2D18A580DC26C325F086D6FB9D84F765").build();
             ((AdViewHolder)holder).adView.loadAd(adRequest);
         }
-/*
-        if ((currentDate.compareTo(startDate) > 0) && (currentDate.compareTo(endDate) < 0)) {
-            holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary));
-        }
-        else {
-            holder.cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.cardViewStandard));
-        }
-*/
+
     }
 
     @Override

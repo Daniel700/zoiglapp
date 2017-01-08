@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -23,6 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import main.zoiglKalender.R;
 import model.Review;
+import model.Tavern;
 import view.ReviewDialog;
 
 /**
@@ -52,6 +54,7 @@ public class DetailedTavernActivity extends AppCompatActivity{
     @BindView(R.id.recycler_view_reviews) RecyclerView recyclerView;
     @BindView(R.id.fab_review) FloatingActionButton fab_review;
 
+    private Tavern tavern;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,18 +62,15 @@ public class DetailedTavernActivity extends AppCompatActivity{
         setContentView(R.layout.activity_detailed_tavern);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Zoiglname");
-
-        // add back arrow to toolbar
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        tavern = (Tavern) getIntent().getSerializableExtra("Tavern");
+        if (tavern != null){
+            initToolbar();
+            setContent();
         }
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        //ToDo Dummy Data...
+        //ToDo Handle Review Data...
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         ArrayList<Review> tmpList = new ArrayList<>();
         tmpList.add(new Review());
         tmpList.add(new Review());
@@ -79,10 +79,6 @@ public class DetailedTavernActivity extends AppCompatActivity{
         recyclerView.setAdapter(adapterReviews);
 
     }
-
-
-
-
 
 
     @OnClick(R.id.detail_button_navigation)
@@ -106,6 +102,21 @@ public class DetailedTavernActivity extends AppCompatActivity{
             finish(); // close this activity and return to preview activity (if there is any)
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void initToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(tavern.getName());
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
+    }
+
+    public void setContent(){
+        //ToDo set Text Views
     }
 
 

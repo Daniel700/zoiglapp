@@ -7,6 +7,6 @@ package misc;
 public class Constants {
 
     public static final String LOGGER_DEBUG = "DEBUG";
-
+    public static final String WEEKDAYS[] = {"Wochentag", "Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
 
 }

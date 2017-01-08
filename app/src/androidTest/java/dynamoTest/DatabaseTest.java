@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -87,6 +88,12 @@ public class DatabaseTest {
                         sdf.setTimeZone(utc);
                         startDate = sdf.parse(parts[1].trim());
                         endDate = sdf.parse(parts[2].trim());
+
+                        Calendar cal = Calendar.getInstance(utc);
+                        cal.setTime(endDate);
+                        cal.set(Calendar.HOUR_OF_DAY, 23);
+                        cal.set(Calendar.MINUTE,59);
+                        endDate = cal.getTime();
                     }
                     catch (Exception e){
                         e.printStackTrace();

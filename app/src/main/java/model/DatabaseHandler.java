@@ -32,19 +32,6 @@ public class DatabaseHandler {
 
 
 
-    @Deprecated
-    public void loadEventsAndSaveToDataHolder() {
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
-        PaginatedList<Event> resultList = mapper.scan(Event.class, scanExpression);
-        resultList.loadAllResults();
-
-        ArrayList<Event> eventList = new ArrayList<>();
-        eventList.addAll(resultList);
-        Collections.sort(eventList);
-
-        DataHolder.getInstance().saveEventsToDataHolder(eventList);
-    }
-
 
     public void establishDBConnection(){
         CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(context, Settings.IDENTITY_POOL_ID, Regions.EU_WEST_1);
@@ -63,9 +50,30 @@ public class DatabaseHandler {
         mapper.save(review);
     }
 
-    public void loadTaverns(String tableName){
 
+    public ArrayList<OpeningDate> loadCalendar(){
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+        PaginatedList<OpeningDate> resultList = mapper.scan(OpeningDate.class, scanExpression);
+        resultList.loadAllResults();
+
+        ArrayList<OpeningDate> dates = new ArrayList<>();
+        dates.addAll(resultList);
+        Collections.sort(dates);
+        return dates;
     }
+
+
+    public ArrayList<Tavern> loadTaverns(){
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+        PaginatedList<Tavern> resultList = mapper.scan(Tavern.class, scanExpression);
+        resultList.loadAllResults();
+
+        ArrayList<Tavern> taverns = new ArrayList<>();
+        taverns.addAll(resultList);
+        Collections.sort(taverns);
+        return taverns;
+    }
+
 
     public void updateTavern(String tavernName){
         //1. load specific tavern
@@ -73,9 +81,14 @@ public class DatabaseHandler {
         //3. save
     }
 
+
     public void saveTaverns(ArrayList<Tavern> list){
-        mapper.batchSave(list);
+        //Each Tavern must be saved separately so that the version attribute gets saved (version attribute will not be saved with batchSave)
+        for (int i = 0; i < list.size(); i++){
+            mapper.save(list.get(i));
+        }
     }
+
 
     public void saveOpeningDates(ArrayList<OpeningDate> list){
         mapper.batchSave(list);

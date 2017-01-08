@@ -5,12 +5,14 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBHashKey;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBVersionAttribute;
 
+import java.io.Serializable;
+
 /**
  * Created by Daniel on 02.01.2017.
  */
 
 @DynamoDBTable(tableName = "taverns")
-public class Tavern {
+public class Tavern implements Comparable<Tavern>, Serializable {
 
     @DynamoDBHashKey
     @DynamoDBAttribute
@@ -26,11 +28,11 @@ public class Tavern {
     @DynamoDBAttribute
     private boolean realZoigl;
     @DynamoDBAttribute
-    private double rating;
+    private float rating;
     @DynamoDBAttribute
-    private double ratingSum;
+    private float ratingSum;
     @DynamoDBAttribute
-    private double ratingCount;
+    private float ratingCount;
     @DynamoDBVersionAttribute
     private Long version;
 
@@ -68,6 +70,38 @@ public class Tavern {
     public Tavern() {
     }
 
+
+    @Override
+    public int compareTo(Tavern tavern) {
+        return this.getName().compareTo(tavern.getName());
+    }
+
+
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public float getRatingCount() {
+        return ratingCount;
+    }
+
+    public void setRatingCount(float ratingCount) {
+        this.ratingCount = ratingCount;
+    }
+
+    public float getRatingSum() {
+        return ratingSum;
+    }
+
+    public void setRatingSum(float ratingSum) {
+        this.ratingSum = ratingSum;
+    }
+
     public int getPostalCode() {
         return postalCode;
     }
@@ -76,36 +110,12 @@ public class Tavern {
         this.postalCode = postalCode;
     }
 
-    public double getRatingCount() {
-        return ratingCount;
-    }
-
-    public void setRatingCount(double ratingCount) {
-        this.ratingCount = ratingCount;
-    }
-
-    public double getRatingSum() {
-        return ratingSum;
-    }
-
-    public void setRatingSum(double ratingSum) {
-        this.ratingSum = ratingSum;
-    }
-
     public Long getVersion() {
         return version;
     }
 
     public void setVersion(Long version) {
         this.version = version;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public void setRating(double rating) {
-        this.rating = rating;
     }
 
     public String getCity() {

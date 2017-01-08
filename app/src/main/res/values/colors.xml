@@ -6,5 +6,5 @@
 
     <color name="divider">#424242</color>
     <color name="colorText">#2B2B2B</color>
-    <color name="cardViewStandard">#F0F0F0</color>
+    <color name="calendarHeadlineNegative">#424242</color>
 </resources>

@@ -31,6 +31,17 @@ public class Review {
     private String userName;
 
 
+    public Review(String tavernName, String userID, String userName, String message, double rating, Date date) {
+        this.tavernName = tavernName;
+        this.userID = userID;
+        this.userName = userName;
+        this.message = message;
+        this.rating = rating;
+        this.date = date;
+    }
+
+    public Review() {
+    }
 
     public String getUserName() {
         return userName;

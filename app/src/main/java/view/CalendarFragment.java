@@ -26,6 +26,7 @@ import com.google.android.gms.ads.NativeExpressAdView;
 import com.google.android.gms.ads.formats.NativeAdView;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -38,6 +39,7 @@ import main.zoiglKalender.R;
 import misc.Settings;
 import model.DataHolder;
 import model.DatabaseHandler;
+import model.OpeningDate;
 
 
 public class CalendarFragment extends Fragment {
@@ -80,7 +82,7 @@ public class CalendarFragment extends Fragment {
                 }
                 loadInterstitialAd();
 
-                adapterCalendar = new AdapterCalendar(DataHolder.getInstance().getListPerMonth(position));
+                //adapterCalendar = new AdapterCalendar(DataHolder.getInstance().getListPerMonth(position));
                 recyclerView.setAdapter(adapterCalendar);
             }
 
@@ -198,6 +200,7 @@ public class CalendarFragment extends Fragment {
     class FetchDataTask extends AsyncTask<Void, Void, Void> {
 
         Exception error;
+        ArrayList<OpeningDate> dateList = new ArrayList<>();
 
         @Override
         protected void onPreExecute() {
@@ -216,11 +219,13 @@ public class CalendarFragment extends Fragment {
             //Load Data from DynamoDB
             try {
                 DatabaseHandler handler = new DatabaseHandler(getContext());
-                handler.loadEventsAndSaveToDataHolder();
+                dateList = handler.loadCalendar();
+                //ToDo load calendar from dynamo
                 Thread.sleep(500);
             }
             catch (Exception e){
                 error = e;
+                e.printStackTrace();
             }
 
             return null;
@@ -241,9 +246,13 @@ public class CalendarFragment extends Fragment {
                 recyclerView.setVisibility(View.VISIBLE);
             }
 
+            adapterCalendar = new AdapterCalendar(dateList);
+            recyclerView.setAdapter(adapterCalendar);
+            /*
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(new Date());
             spinnerMonths.setSelection(calendar.get(Calendar.MONTH));
+            */
 
         }
     }

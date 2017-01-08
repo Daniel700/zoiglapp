@@ -1,23 +1,29 @@
 package view;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import adapter.AdapterTaverns;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import main.zoiglKalender.R;
+import model.DatabaseHandler;
 import model.Tavern;
 
 /**
@@ -43,16 +49,8 @@ public class TavernFragment extends Fragment {
         ButterKnife.bind(this, rootView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        //ToDo Dummy Data...
-        Tavern tavern = new Tavern();
-        Tavern tavern1 = new Tavern();
-        ArrayList<Tavern> arrayList = new ArrayList<Tavern>();
-        arrayList.add(tavern);
-        arrayList.add(tavern1);
-
-        adapterTaverns = new AdapterTaverns(arrayList);
-        recyclerView.setAdapter(adapterTaverns);
+        //ToDo save to DataHolder before request?
+        new FetchTavernDataTask().execute();
 
         return rootView;
     }
@@ -74,6 +72,45 @@ public class TavernFragment extends Fragment {
 
         return false;
     }
+
+
+
+
+
+    class FetchTavernDataTask extends AsyncTask<Void, Void, Void> {
+
+        Exception error;
+        ArrayList<Tavern> tavernArrayList;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            //Load Data from DynamoDB
+            try {
+                DatabaseHandler handler = new DatabaseHandler(getContext());
+                tavernArrayList = handler.loadTaverns();
+            }
+            catch (Exception e){
+                error = e;
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            adapterTaverns = new AdapterTaverns(tavernArrayList);
+            recyclerView.setAdapter(adapterTaverns);
+        }
+    }
+
 
 
 }
