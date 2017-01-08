@@ -25,6 +25,12 @@ public class OpeningDate {
     private Date endDate;
 
 
+    public OpeningDate(String tavernName, Date startDate, Date endDate) {
+        this.tavernName = tavernName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
 
     public Date getEndDate() {
         return endDate;

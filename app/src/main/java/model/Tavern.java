@@ -36,7 +36,7 @@ public class Tavern {
 
     //contact details
     @DynamoDBAttribute
-    private String URL;
+    private String url;
     @DynamoDBAttribute
     private String owner;
     @DynamoDBAttribute
@@ -47,8 +47,26 @@ public class Tavern {
     private String email;
 
 
+    public Tavern(String name, String street, int postalCode, String city, String openingHours, boolean realZoigl, String url, String owner, String phoneNumber, String mobilePhoneNumber, String email) {
+        this.name = name;
+        this.street = street;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.openingHours = openingHours;
+        this.realZoigl = realZoigl;
+        this.url = url;
+        this.owner = owner;
+        this.phoneNumber = phoneNumber;
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.email = email;
 
+        this.rating = 0;
+        this.ratingSum = 0;
+        this.ratingCount = 0;
+    }
 
+    public Tavern() {
+    }
 
     public int getPostalCode() {
         return postalCode;
@@ -162,11 +180,11 @@ public class Tavern {
         this.street = street;
     }
 
-    public String getURL() {
-        return URL;
+    public String getUrl() {
+        return url;
     }
 
-    public void setURL(String URL) {
-        this.URL = URL;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

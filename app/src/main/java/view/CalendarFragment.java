@@ -137,6 +137,7 @@ public class CalendarFragment extends Fragment {
 
         //ToDo use Adapter with only active dates
         if (activeDatesCheckBox.isChecked()){
+            //ToDo trigger interstitial ad here
             Toast.makeText(getContext(), "Aktive Termine", Toast.LENGTH_LONG).show();
         }
         else {

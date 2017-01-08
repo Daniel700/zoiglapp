@@ -73,13 +73,12 @@ public class DatabaseHandler {
         //3. save
     }
 
-    public void saveTaverns(Tavern tavern){
-       // mapper.batchSave(taverns);
-        mapper.save(tavern);
+    public void saveTaverns(ArrayList<Tavern> list){
+        mapper.batchSave(list);
     }
 
-    public void saveOpeningDate(OpeningDate openingDate){
-        mapper.save(openingDate);
+    public void saveOpeningDates(ArrayList<OpeningDate> list){
+        mapper.batchSave(list);
     }
 
 }
