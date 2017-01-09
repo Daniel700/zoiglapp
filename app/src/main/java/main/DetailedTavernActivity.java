@@ -1,6 +1,6 @@
 package main;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +16,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import adapter.AdapterReviews;
 import adapter.InterfaceCommunicator;
+import adapter.RatingChangedListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -40,7 +41,7 @@ import static java.security.AccessController.getContext;
  * Created by Daniel on 06.01.2017.
  */
 
-public class DetailedTavernActivity extends AppCompatActivity implements InterfaceCommunicator {
+public class DetailedTavernActivity extends AppCompatActivity implements InterfaceCommunicator, RatingChangedListener, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.coordinator_layout_detail_tavern) CoordinatorLayout coordinatorLayout;
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -60,6 +61,7 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
     @BindView(R.id.detail_mail) TextView textView_mail;
     @BindView(R.id.detail_website) TextView textView_website;
 
+    @BindView(R.id.swipe_refresh_reviews) SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.recycler_view_reviews) RecyclerView recyclerView;
     @BindView(R.id.progressBar_reviewList) ProgressBar progressBar;
     @BindView(R.id.fab_review) FloatingActionButton fab_review;
@@ -81,8 +83,8 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
 
         //ToDo Handle Review Data...
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        swipeRefreshLayout.setOnRefreshListener(this);
         new LoadReviewsTask().execute();
-
 
     }
 
@@ -95,9 +97,16 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
 
     @OnClick(R.id.fab_review)
     public void createReview(){
-        FragmentManager fm = getSupportFragmentManager();
-        ReviewDialog reviewDialog = new ReviewDialog();
-        reviewDialog.show(fm, "review-dialog");
+        SharedPreferences sharedPreferences = getSharedPreferences("InstallSettings", MODE_PRIVATE);
+        boolean alreadyVoted = sharedPreferences.getBoolean(tavern.getName(), false);
+        if (!alreadyVoted){
+            FragmentManager fm = getSupportFragmentManager();
+            ReviewDialog reviewDialog = new ReviewDialog();
+            reviewDialog.show(fm, "review-dialog");
+        }
+        else {
+            Snackbar.make(coordinatorLayout, "Du hast für diese Zoiglstube bereits eine Bewertung abgegeben", Snackbar.LENGTH_LONG).show();
+        }
     }
 
 
@@ -112,10 +121,25 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
 
 
     @Override
+    public void onRefresh() {
+        new LoadReviewsTask().execute();
+    }
+
+
+    @Override
     public void sendRequestCode(int requestCode) {
-        if (requestCode == 1){
+        if (requestCode == 1)
             Snackbar.make(coordinatorLayout, "Bewertung wurde erfolgreich an den Server gesendet", Snackbar.LENGTH_LONG).show();
-        }
+        if (requestCode == 400)
+            Snackbar.make(coordinatorLayout, "Bewertung konnte nicht an den Server gesendet werden", Snackbar.LENGTH_LONG).show();
+    }
+
+
+    @Override
+    public void sendRating(float rating) {
+        ratingBarOwn.setRating(rating);
+        //ToDo invalidate ratingBarOwn???
+        //ToDo recalculate ratingSum
     }
 
 
@@ -132,7 +156,9 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
 
     public void setContent(){
         ratingBarSum.setRating(tavern.getRating());
-        ratingBarOwn.setRating(3);      //ToDo getRating of sharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("InstallSettings", MODE_PRIVATE);
+        Float rating = sharedPreferences.getFloat(tavern.getName().concat("_rating"), 0);
+        ratingBarOwn.setRating(rating);
         textView_ratingBarSum.setText("(" + Math.round(tavern.getRatingCount()) + ")");
         textView_hours.setText(tavern.getOpeningHours().replace("-", "\n"));
         textView_street.setText(tavern.getStreet() + ", " + String.valueOf(tavern.getPostalCode()) + " " + tavern.getCity());
@@ -175,23 +201,21 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
             return null;
         }
 
-
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             if (error != null)
-                //ToDo change error message
                 Toast.makeText(getApplicationContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
             else{
                 progressBar.setVisibility(View.GONE);
+                swipeRefreshLayout.setRefreshing(false);
                 recyclerView.setVisibility(View.VISIBLE);
 
-                AdapterReviews adapterReviews = new AdapterReviews(reviewList, getApplicationContext());
+                AdapterReviews adapterReviews = new AdapterReviews(reviewList);
                 recyclerView.setAdapter(adapterReviews);
             }
-
-
         }
+
     }
 
 

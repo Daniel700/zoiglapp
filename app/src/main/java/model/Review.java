@@ -20,7 +20,7 @@ public class Review implements Comparable<Review> {
     @DynamoDBAttribute
     private String tavernName;
     @DynamoDBAttribute
-    private double rating;
+    private float rating;
     @DynamoDBAttribute
     private String message;
     @DynamoDBAttribute
@@ -31,7 +31,7 @@ public class Review implements Comparable<Review> {
     private String userName;
 
 
-    public Review(String tavernName, String userID, String userName, String message, double rating, Date date) {
+    public Review(String tavernName, String userID, String userName, String message, float rating, Date date) {
         this.tavernName = tavernName;
         this.userID = userID;
         this.userName = userName;
@@ -75,11 +75,11 @@ public class Review implements Comparable<Review> {
         this.message = message;
     }
 
-    public double getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

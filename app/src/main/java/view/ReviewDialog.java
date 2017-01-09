@@ -24,6 +24,7 @@ import java.util.Date;
 
 import adapter.AdapterCalendar;
 import adapter.InterfaceCommunicator;
+import adapter.RatingChangedListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -50,6 +51,7 @@ public class ReviewDialog extends AppCompatDialogFragment {
     @BindView(R.id.dialog_rating_bar)       RatingBar ratingBar;
 
     private InterfaceCommunicator interfaceCommunicator;
+    private RatingChangedListener ratingChangedListener;
     private Tavern tavern;
     private View rootView;
 
@@ -73,6 +75,7 @@ public class ReviewDialog extends AppCompatDialogFragment {
         tavern = ((DetailedTavernActivity) getActivity()).getTavern();
         try {
             this.interfaceCommunicator = (InterfaceCommunicator) getActivity();
+            this.ratingChangedListener = (RatingChangedListener) getActivity();
         }
         catch (final ClassCastException e) {
             throw new ClassCastException(getActivity().toString() + " must implement InterfaceCommunicator");
@@ -130,6 +133,7 @@ public class ReviewDialog extends AppCompatDialogFragment {
             try {
                 DatabaseHandler handler = new DatabaseHandler(getContext());
                 handler.saveReview(reviews[0]);
+                //ToDo update Tavern?
             }
             catch (Exception e){
                 error = e;
@@ -142,10 +146,16 @@ public class ReviewDialog extends AppCompatDialogFragment {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             if (error != null)
-                Toast.makeText(getContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
+                interfaceCommunicator.sendRequestCode(400);
             else {
-                //ToDo save review / tavern to shared preferences
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("InstallSettings", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(tavern.getName(), true);
+                editor.putFloat(tavern.getName().concat("_rating"), ratingBar.getRating());
+                editor.apply();
+
                 interfaceCommunicator.sendRequestCode(1);
+                ratingChangedListener.sendRating(tavern.getRating());
                 dismiss();
             }
         }

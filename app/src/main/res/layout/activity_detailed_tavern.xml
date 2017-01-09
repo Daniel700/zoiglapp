@@ -25,7 +25,6 @@
             android:id="@+id/detail_ratingBarSum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:rating="5"
             android:stepSize="0.1"
             android:numStars="5"
             android:isIndicator="true"
@@ -37,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
             android:layout_marginStart="3dp"
-            android:text="(14)"/>
+            android:text="(0)"/>
     </LinearLayout>
 
 
@@ -57,9 +56,8 @@
             android:id="@+id/detail_ratingBarOwn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:rating="5"
-            android:stepSize="0.1"
             android:numStars="5"
+            android:stepSize="0.5"
             android:isIndicator="true"
             style="?android:attr/ratingBarStyleSmall"/>
 
@@ -292,11 +290,18 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_reviews"
-            android:scrollbars="vertical"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_reviews"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_reviews"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_review"

@@ -1,12 +1,14 @@
 package adapter;
 
-import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -21,16 +23,18 @@ import model.Review;
 public class AdapterReviews extends RecyclerView.Adapter<AdapterReviews.ViewHolder>{
 
     private ArrayList<Review> reviewList;
-    private Context context;
 
-    public AdapterReviews(ArrayList<Review> reviews, Context ctx){
+    public AdapterReviews(ArrayList<Review> reviews){
         this.reviewList = reviews;
-        context = ctx;
     }
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.card_view_reviews)   protected CardView cardView;
+        @BindView(R.id.card_view_reviews)           protected CardView cardView;
+        @BindView(R.id.card_view_review_author)     protected TextView author;
+        @BindView(R.id.card_view_review_date)       protected TextView date;
+        @BindView(R.id.card_view_review_message)    protected TextView message;
+        @BindView(R.id.card_view_review_ratingBar)  protected RatingBar ratingBar;
 
         public ViewHolder(View v) {
             super(v);
@@ -55,7 +59,13 @@ public class AdapterReviews extends RecyclerView.Adapter<AdapterReviews.ViewHold
 
     @Override
     public void onBindViewHolder(AdapterReviews.ViewHolder holder, int position) {
-            //ToDo set review content from xml...
+            DateFormat dateFormat = DateFormat.getDateInstance();
+            Review review = reviewList.get(position);
+
+            holder.author.setText(review.getUserName());
+            holder.date.setText(dateFormat.format(review.getDate()));
+            holder.message.setText(review.getMessage());
+            holder.ratingBar.setRating(review.getRating());
     }
 
 

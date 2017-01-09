@@ -86,7 +86,7 @@ public class DatabaseHandler {
     }
 
 
-    public void updateTavern(String tavernName){
+    public void updateRatingForTavern(String tavernName){
         //1. load specific tavern
         //2. update rating number
         //3. save

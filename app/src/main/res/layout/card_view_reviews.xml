@@ -36,6 +36,7 @@
                 android:text="Name"/>
 
             <RatingBar
+                android:id="@+id/card_view_review_ratingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:rating="5"
@@ -62,6 +63,7 @@
                 android:text="Datum: "/>
 
             <TextView
+                android:id="@+id/card_view_review_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12.01.2017"/>
@@ -77,6 +79,7 @@
         </FrameLayout>
 
         <TextView
+            android:id="@+id/card_view_review_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
