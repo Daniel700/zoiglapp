@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bewertungen insgesamt: "/>
+            android:text="@string/activity_detailed_reviewsAll"/>
 
         <RatingBar
             android:id="@+id/detail_ratingBarSum"
@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Deine Bewertung: "/>
+            android:text="@string/activity_detailed_reviewOwn"/>
 
         <RatingBar
             android:id="@+id/detail_ratingBarOwn"
@@ -130,6 +130,7 @@
             android:gravity="center"
             android:layout_toRightOf="@+id/detail_button_navigation"
             android:layout_toEndOf="@+id/detail_button_navigation"
+            android:autoLink="map"
             android:text="Straße"/>
     </RelativeLayout>
 
@@ -198,6 +199,7 @@
             android:gravity="center"
             android:layout_toRightOf="@+id/detail_button_call"
             android:layout_toEndOf="@+id/detail_button_call"
+            android:autoLink="phone"
             android:text="Telefonnummer"/>
     </RelativeLayout>
 
@@ -232,6 +234,7 @@
             android:gravity="center"
             android:layout_toRightOf="@+id/detail_button_mail"
             android:layout_toEndOf="@+id/detail_button_mail"
+            android:autoLink="email"
             android:text="E-Mail Adresse"/>
     </RelativeLayout>
 
@@ -266,6 +269,7 @@
             android:gravity="center"
             android:layout_toRightOf="@+id/detail_button_website"
             android:layout_toEndOf="@+id/detail_button_website"
+            android:autoLink="web"
             android:text="www.testadresse.de"/>
     </RelativeLayout>
 
@@ -319,18 +323,6 @@
             app:layout_anchorGravity="bottom|right|end" />
 
     </android.support.design.widget.CoordinatorLayout>
-
-
-    <!--
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_gravity="center"
-        android:theme="@style/MaterialButtonChange"
-        android:text="Rezension verfassen" />
--->
 
 
 </LinearLayout>

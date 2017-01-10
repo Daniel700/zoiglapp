@@ -8,7 +8,6 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +57,7 @@ public class ReviewDialog extends AppCompatDialogFragment {
         ButterKnife.bind(this, rootView);
 
         getDialog().setCanceledOnTouchOutside(false);
-        getDialog().setTitle("Rezension verfassen");
+        getDialog().setTitle(getString(R.string.dialog_review_title));
 
         return rootView;
     }
@@ -84,10 +83,10 @@ public class ReviewDialog extends AppCompatDialogFragment {
 
         if (author.getText().toString().trim().isEmpty()){
             textInputLayout.setErrorEnabled(true);
-            textInputLayout.setError("Bitte einen Namen angeben");
+            textInputLayout.setError(getString(R.string.dialog_review_name_error));
         }
         else if (ratingBar.getRating() == 0){
-            Snackbar.make(rootView, "Bitte eine Punktzahl vergeben", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(rootView, getString(R.string.dialog_review_rating_error), Snackbar.LENGTH_LONG).show();
         }
         else {
             SharedPreferences sharedPreferences = getContext().getSharedPreferences("InstallSettings", MODE_PRIVATE);
@@ -97,7 +96,7 @@ public class ReviewDialog extends AppCompatDialogFragment {
             message = message.replaceAll("(?m)^[ \t]*\r?\n", "");
             Review review = new Review(tavern.getName(), user_id, author.getText().toString().trim(), message, ratingBar.getRating(), new Date());
 
-            Log.e("REVIEW DATA", review.getTavernName() + " " + review.getUserID() + " " + review.getUserName() + " " + review.getMessage() + " " + String.valueOf(review.getRating()) + " " + review.getDate().toString());
+            //Log.e("REVIEW DATA", review.getTavernName() + " " + review.getUserID() + " " + review.getUserName() + " " + review.getMessage() + " " + String.valueOf(review.getRating()) + " " + review.getDate().toString());
             new SendReviewTask().execute(review);
         }
 
@@ -107,11 +106,10 @@ public class ReviewDialog extends AppCompatDialogFragment {
 
     @OnClick(R.id.dialog_button_info)
     public void showReviewInfo(){
-        //ToDo nachricht anpassen falls schon rezension abgegeben wurde?
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.MyAlertDialogStyle);
-        builder.setTitle("Hinweis");
-        builder.setMessage("Solltest du bereits eine Rezension für diese Zoiglstube abgegeben haben und erneut eine Rezension senden, so wird die alte Rezension überschrieben.");
-        builder.setPositiveButton("OK", null);
+        builder.setTitle(getString(R.string.dialog_review_info_title));
+        builder.setMessage(getString(R.string.dialog_review_info_message));
+        builder.setPositiveButton(getString(R.string.dialog_review_info_button), null);
         builder.show();
     }
 

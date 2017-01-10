@@ -15,7 +15,6 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 import com.amazonaws.services.dynamodbv2.model.Condition;
 
-import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.Collections;
 

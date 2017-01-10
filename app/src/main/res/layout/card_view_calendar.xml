@@ -92,14 +92,14 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="-"
+                    android:text="@string/card_calendar_divider"
                     />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="-"
+                    android:text="@string/card_calendar_divider"
                     />
             </TableRow>
 

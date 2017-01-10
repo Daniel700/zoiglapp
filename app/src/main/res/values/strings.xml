@@ -5,12 +5,29 @@
     <!--        STRINGS IN CODE         -->
     <string name="echterZoigl">Echter Zoigl vom Kommunbrauer</string>
     <string name="connectionException">Bitte mit dem Internet verbinden und erneut laden</string>
+    <string name="sendReviewSuccess">Bewertung wurde erfolgreich an den Server gesendet</string>
+    <string name="sendReviewFail">Bewertung konnte nicht an den Server gesendet werden</string>
+    <string name="dialog_review_title">Rezension verfassen</string>
+    <string name="dialog_review_name_error">Bitte einen Namen angeben</string>
+    <string name="dialog_review_rating_error">Bitte eine Punktzahl vergeben</string>
+    <string name="dialog_review_info_title">Hinweis</string>
+    <string name="dialog_review_info_message">Solltest du bereits eine Rezension für diese Zoiglstube abgegeben haben und erneut eine Rezension senden, so wird die alte Rezension überschrieben.</string>
+    <string name="dialog_review_info_button">OK</string>
 
     
     <!--        STRINGS IN XML          -->
-    <string name="chooseMonth">Monat auswählen: </string>
-    <string name="currentDate">Aktuelles Datum: </string>
-
+    <string name="chooseMonth">Monat auswählen: \u0020</string>
+    <string name="currentDate">Aktuelles Datum: \u0020</string>
+    <string name="activeDates">Nur aktive Termine anzeigen:</string>
+    <string name="activity_detailed_reviewsAll">Bewertungen insgesamt: \u0020</string>
+    <string name="activity_detailed_reviewOwn">Deine Bewertung: \u0020</string>
+    <string name="card_calendar_divider">-</string>
+    <string name="card_review_author">Autor: \u0020</string>
+    <string name="card_review_date">Datum: \u0020</string>
+    <string name="dialog_input_hint1">Name</string>
+    <string name="dialog_input_hint2"> Beschreibung (Optional)</string>
+    <string name="dialog_button_positive">Bewerten</string>
+    <string name="dialog_button_negative">Abbrechen</string>
 
     
     <!--            AD_MOB LIVE              -->

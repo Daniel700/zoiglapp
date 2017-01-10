@@ -87,7 +87,7 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
 
     @OnClick(R.id.detail_button_navigation)
     public void startNavigation(){
-        Snackbar.make(coordinatorLayout, "Action triggered", Snackbar.LENGTH_LONG).show();
+        //Snackbar.make(coordinatorLayout, "Action triggered", Snackbar.LENGTH_LONG).show();
     }
 
 
@@ -118,9 +118,9 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
     @Override
     public void sendRequestCode(int requestCode) {
         if (requestCode == 1)
-            Snackbar.make(coordinatorLayout, "Bewertung wurde erfolgreich an den Server gesendet", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(coordinatorLayout, getString(R.string.sendReviewSuccess), Snackbar.LENGTH_LONG).show();
         if (requestCode == 400)
-            Snackbar.make(coordinatorLayout, "Bewertung konnte nicht an den Server gesendet werden", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(coordinatorLayout, getString(R.string.sendReviewFail), Snackbar.LENGTH_LONG).show();
     }
 
 

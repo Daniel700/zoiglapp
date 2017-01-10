@@ -39,7 +39,7 @@ public class AdapterTaverns extends RecyclerView.Adapter<AdapterTaverns.ViewHold
         @BindView(R.id.card_view_tavern_ratingBar)      protected RatingBar ratingBar;
         @BindView(R.id.card_view_tavern_ratingBarText)  protected TextView ratingBarText;
         @BindView(R.id.card_view_tavern_realZoigl)      protected TextView realZoigl;
-        private Context context;
+        protected Context context;
 
         public ViewHolder(View v) {
             super(v);
@@ -75,7 +75,7 @@ public class AdapterTaverns extends RecyclerView.Adapter<AdapterTaverns.ViewHold
         holder.ratingBar.setRating(currentTavern.getRating());
         holder.ratingBarText.setText("(" + String.valueOf(Math.round(currentTavern.getRatingCount())) + ")");
         if (currentTavern.isRealZoigl())
-            holder.realZoigl.setText("Echter Zoigl vom Kommunbrauer");
+            holder.realZoigl.setText(holder.context.getString(R.string.echterZoigl));
         else
             holder.realZoigl.setText("");
 

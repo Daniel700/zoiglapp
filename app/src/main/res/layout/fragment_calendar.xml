@@ -55,7 +55,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="end|center_vertical"
                 android:gravity="center_vertical"
-                android:text="Nur aktive Termine anzeigen:" />
+                android:text="@string/activeDates" />
 
             <CheckBox
                 android:id="@+id/activeDatesCheckBox"
