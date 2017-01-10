@@ -52,10 +52,6 @@ public class DatabaseHandler {
         return reviews;
     }
 
-    public void saveReview(Review review){
-        mapper.save(review);
-    }
-
 
     public ArrayList<OpeningDate> loadCalendar(){
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
@@ -85,11 +81,25 @@ public class DatabaseHandler {
         return taverns;
     }
 
-    //ToDo update
-    public void updateRatingForTavern(String tavernName){
+
+    public void updateRatingForTavernAndSaveReview(Tavern tavern, Review review){
         //1. load specific tavern
+        Tavern currentTavern = mapper.load(Tavern.class, tavern.getName());
+
         //2. update rating number
+        float sum = currentTavern.getRatingSum();
+        float count = currentTavern.getRatingCount();
+        sum += review.getRating();
+        count = count + 1;
+        float newRating = sum / count;
+
+        currentTavern.setRating(newRating);
+        currentTavern.setRatingSum(sum);
+        currentTavern.setRatingCount(count);
+
         //3. save
+        mapper.save(currentTavern);
+        mapper.save(review);
     }
 
 

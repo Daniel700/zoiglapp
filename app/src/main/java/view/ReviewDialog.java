@@ -16,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
-import android.widget.Toast;
 
 import java.util.Date;
 
@@ -140,8 +139,7 @@ public class ReviewDialog extends AppCompatDialogFragment {
         protected Void doInBackground(Review... reviews) {
             try {
                 DatabaseHandler handler = new DatabaseHandler(getContext());
-                handler.saveReview(reviews[0]);
-                //ToDo first update Tavern and only if successful send review - otherwise show an error message
+                handler.updateRatingForTavernAndSaveReview(tavern, reviews[0]);
             }
             catch (Exception e){
                 error = e;
