@@ -134,13 +134,12 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
 
     public void initToolbar(){
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(tavern.getName());
         // add back arrow to toolbar
         if (getSupportActionBar() != null){
+            getSupportActionBar().setTitle(tavern.getName());
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
     }
 
     public void setContent(){
