@@ -182,11 +182,12 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
         protected Void doInBackground(Void... voids) {
             try {
                 DatabaseHandler handler = new DatabaseHandler(getApplicationContext());
-                reviewList = handler.loadAllReviews();
+                reviewList = handler.loadReviewsForTavern(tavern);
                 Thread.sleep(500);
             }
             catch (Exception e){
                 error = e;
+                e.printStackTrace();
             }
             return null;
         }

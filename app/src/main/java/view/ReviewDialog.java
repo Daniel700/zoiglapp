@@ -98,9 +98,7 @@ public class ReviewDialog extends AppCompatDialogFragment {
             Review review = new Review(tavern.getName(), user_id, author.getText().toString().trim(), message, ratingBar.getRating(), new Date());
 
             Log.e("REVIEW DATA", review.getTavernName() + " " + review.getUserID() + " " + review.getUserName() + " " + review.getMessage() + " " + String.valueOf(review.getRating()) + " " + review.getDate().toString());
-
             new SendReviewTask().execute(review);
-
         }
 
 

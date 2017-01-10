@@ -15,17 +15,15 @@ import java.util.Date;
  * Created by Daniel on 02.01.2017.
  */
 
-@DynamoDBTable(tableName = "reviews_test")
+@DynamoDBTable(tableName = "reviews")
 public class Review implements Comparable<Review> {
 
-    @DynamoDBIndexHashKey
     @DynamoDBHashKey
     @DynamoDBAttribute
     private String tavernName;
     @DynamoDBRangeKey
     @DynamoDBAttribute
     private String userID;
-    @DynamoDBIndexRangeKey
     @DynamoDBAttribute
     private Date date;
     @DynamoDBAttribute
