@@ -35,8 +35,6 @@ import model.Review;
 import model.Tavern;
 import view.ReviewDialog;
 
-import static java.security.AccessController.getContext;
-
 /**
  * Created by Daniel on 06.01.2017.
  */
@@ -194,6 +192,7 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
             try {
                 DatabaseHandler handler = new DatabaseHandler(getApplicationContext());
                 reviewList = handler.loadReviews();
+                Thread.sleep(500);
             }
             catch (Exception e){
                 error = e;

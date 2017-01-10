@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +23,12 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import adapter.AdapterCalendar;
+import adapter.MySpinner;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -34,18 +37,23 @@ import main.zoiglKalender.R;
 import misc.Settings;
 import model.DataHolder;
 import model.DatabaseHandler;
+import model.OpeningDate;
 
 
-public class CalendarFragment extends Fragment {
+public class CalendarFragment extends Fragment implements AdapterView.OnItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
+    @BindView(R.id.swipe_refresh_calendar)  SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.recycler_view_calendar)  RecyclerView recyclerView;
     @BindView(R.id.fab_refresh_calendar)    FloatingActionButton fab;
-    @BindView(R.id.spinner_months)          Spinner spinnerMonths;
+    @BindView(R.id.spinner_months)          MySpinner spinnerMonths;
     @BindView(R.id.textView_Date)           TextView textView_Date;
     @BindView(R.id.progressBar)             ProgressBar progressBar;
     @BindView(R.id.activeDatesCheckBox)     CheckBox activeDatesCheckBox;
     private InterstitialAd interstitialAd;
     private Unbinder unbinder;
+    private boolean firstSelection = true;
+    private boolean showAd = false;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,17 +71,12 @@ public class CalendarFragment extends Fragment {
         DateFormat dateFormat = DateFormat.getDateInstance();
         textView_Date.setText(dateFormat.format(new Date()));
 
-        spinnerMonths.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //ToDo show List per Month -> pass month to asyncTask
-                new FetchCalendarDataTask().execute();
-            }
+        spinnerMonths.setOnItemSelectedEvenIfUnchangedListener(this);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        spinnerMonths.setSelection(cal.get(Calendar.MONTH));
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(this);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -117,9 +120,15 @@ public class CalendarFragment extends Fragment {
     }
 
 
+    @Override
+    public void onRefresh() {
+        new FetchCalendarDataTask().execute();
+    }
+
+
     @OnClick(R.id.activeDatesCheckBox)
     public void showActiveDates(){
-        //ToDo use Adapter with only active dates
+        //show only currently opened taverns
         if (activeDatesCheckBox.isChecked()){
             //Show interstitial Ad
             if (interstitialAd.isLoaded()) {
@@ -127,12 +136,69 @@ public class CalendarFragment extends Fragment {
             }
             loadInterstitialAd();
 
-            Toast.makeText(getContext(), "Aktive Termine", Toast.LENGTH_LONG).show();
+            ArrayList<OpeningDate> calendar = DataHolder.getInstance().getCalendar();
+            ArrayList<OpeningDate> openedCalendar = new ArrayList<>();
+            Date currentDate = new Date();
+            for (OpeningDate openingDate: calendar){
+                if ((currentDate.compareTo(openingDate.getStartDate()) > 0) && (currentDate.compareTo(openingDate.getEndDate()) < 0))
+                    openedCalendar.add(openingDate);
+            }
+            AdapterCalendar adapterCalendar = new AdapterCalendar(openedCalendar);
+            recyclerView.setAdapter(adapterCalendar);
         }
+        //show all dates
         else {
-            Toast.makeText(getContext(), "Alle Termine", Toast.LENGTH_LONG).show();
+            AdapterCalendar adapterCalendar = new AdapterCalendar(DataHolder.getInstance().getCalendar());
+            recyclerView.setAdapter(adapterCalendar);
         }
     }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        if (firstSelection){
+            new FetchCalendarDataTask().execute();
+            firstSelection = false;
+        }
+        else {
+            getCalendarDataForMonth(position);
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+    }
+
+
+    private void getCalendarDataForMonth(int position){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        ArrayList<OpeningDate> calendar = DataHolder.getInstance().getCalendar();
+
+        //All Months
+        if (position == 12) {
+            AdapterCalendar adapterCalendar = new AdapterCalendar(calendar);
+            recyclerView.setAdapter(adapterCalendar);
+        }
+        //Selected Month equal to position
+        else {
+            ArrayList<OpeningDate> selectedMonthList = new ArrayList<OpeningDate>();
+            for (OpeningDate date : calendar) {
+                cal.setTime(date.getStartDate());
+                int startMonth = cal.get(Calendar.MONTH);
+                cal.setTime(date.getEndDate());
+                int endMonth = cal.get(Calendar.MONTH);
+
+                if (startMonth == position || endMonth == position)
+                    selectedMonthList.add(date);
+            }
+            AdapterCalendar adapterCalendar = new AdapterCalendar(selectedMonthList);
+            recyclerView.setAdapter(adapterCalendar);
+        }
+    }
+
+
+
 
 
     private void loadInterstitialAd(){
@@ -190,12 +256,27 @@ public class CalendarFragment extends Fragment {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(getContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
             }
-            else
+            else {
                 progressBar.setVisibility(View.GONE);
+                swipeRefreshLayout.setRefreshing(false);
                 recyclerView.setVisibility(View.VISIBLE);
 
-            AdapterCalendar adapterCalendar = new AdapterCalendar(DataHolder.getInstance().getCalendar());
-            recyclerView.setAdapter(adapterCalendar);
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(new Date());
+                spinnerMonths.setSelection(cal.get(Calendar.MONTH));
+
+                if (!showAd)
+                    showAd = true;
+                else {
+                    //Show interstitial Ad
+                    if (interstitialAd.isLoaded()) {
+                        interstitialAd.show();
+                    }
+                    loadInterstitialAd();
+                }
+
+            }
+
         }
     }
 
@@ -204,7 +285,6 @@ public class CalendarFragment extends Fragment {
     @OnClick(R.id.fab_refresh_calendar)
     public void refreshCalendarList(){
         loadInterstitialAd();
-        //ToDo get selected Month and pass to async task
         new FetchCalendarDataTask().execute();
     }
 
