@@ -28,7 +28,7 @@
             android:stepSize="0.1"
             android:numStars="5"
             android:isIndicator="true"
-            style="?android:attr/ratingBarStyleSmall"/>
+            style="@style/Widget.AppCompat.RatingBar.Small"/>
 
         <TextView
             android:id="@+id/detail_ratingBarSumText"
@@ -59,7 +59,7 @@
             android:numStars="5"
             android:stepSize="0.5"
             android:isIndicator="true"
-            style="?android:attr/ratingBarStyleSmall"/>
+            style="@style/Widget.AppCompat.RatingBar.Small"/>
 
     </LinearLayout>
 

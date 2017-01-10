@@ -50,7 +50,7 @@
                 android:stepSize="0.1"
                 android:numStars="5"
                 android:isIndicator="true"
-                style="?android:attr/ratingBarStyleSmall"/>
+                style="@style/Widget.AppCompat.RatingBar.Small"/>
 
             <TextView
                 android:id="@+id/card_view_tavern_ratingBarText"

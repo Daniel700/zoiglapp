@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import java.util.Date;
 
@@ -37,6 +40,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class ReviewDialog extends AppCompatDialogFragment {
 
     @BindView(R.id.dialog_text_input_layout)TextInputLayout textInputLayout;
+    @BindView(R.id.dialog_button_info)      ImageButton button_info;
     @BindView(R.id.dialog_button_positive)  Button button_positive;
     @BindView(R.id.dialog_button_negative)  Button button_negative;
     @BindView(R.id.dialog_edit_author)      EditText author;
@@ -104,6 +108,17 @@ public class ReviewDialog extends AppCompatDialogFragment {
     }
 
 
+    @OnClick(R.id.dialog_button_info)
+    public void showReviewInfo(){
+        //ToDo nachricht anpassen falls schon rezension abgegeben wurde?
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.MyAlertDialogStyle);
+        builder.setTitle("Hinweis");
+        builder.setMessage("Solltest du bereits eine Rezension für diese Zoiglstube abgegeben haben und erneut eine Rezension senden, so wird die alte Rezension überschrieben.");
+        builder.setPositiveButton("OK", null);
+        builder.show();
+    }
+
+
     @OnClick(R.id.dialog_button_negative)
     public void pressedButtonNegative(){
         dismiss();
@@ -144,8 +159,7 @@ public class ReviewDialog extends AppCompatDialogFragment {
             else {
                 SharedPreferences sharedPreferences = getContext().getSharedPreferences("InstallSettings", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(tavern.getName(), true);
-                editor.putFloat(tavern.getName().concat("_rating"), ratingBar.getRating());
+                editor.putFloat(tavern.getName(), ratingBar.getRating());
                 editor.apply();
 
                 interfaceCommunicator.sendRequestCode(1);

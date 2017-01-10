@@ -93,17 +93,9 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
 
     @OnClick(R.id.fab_review)
     public void createReview(){
-        SharedPreferences sharedPreferences = getSharedPreferences("InstallSettings", MODE_PRIVATE);
-        boolean alreadyVoted = sharedPreferences.getBoolean(tavern.getName(), false);
-        //ToDo show message in info alert dialog if you already wrote a review or not
-        //if (!alreadyVoted){
-            FragmentManager fm = getSupportFragmentManager();
-            ReviewDialog reviewDialog = new ReviewDialog();
-            reviewDialog.show(fm, "review-dialog");
-       // }
-       // else {
-        //    Snackbar.make(coordinatorLayout, "Du hast für diese Zoiglstube bereits eine Bewertung abgegeben", Snackbar.LENGTH_LONG).show();
-       // }
+        FragmentManager fm = getSupportFragmentManager();
+        ReviewDialog reviewDialog = new ReviewDialog();
+        reviewDialog.show(fm, "review-dialog");
     }
 
 
@@ -154,7 +146,7 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
     public void setContent(){
         ratingBarSum.setRating(tavern.getRating());
         SharedPreferences sharedPreferences = getSharedPreferences("InstallSettings", MODE_PRIVATE);
-        Float rating = sharedPreferences.getFloat(tavern.getName().concat("_rating"), 0);
+        float rating = sharedPreferences.getFloat(tavern.getName(), 0);
         ratingBarOwn.setRating(rating);
         textView_ratingBarSum.setText("(" + Math.round(tavern.getRatingCount()) + ")");
         textView_hours.setText(tavern.getOpeningHours().replace("-", "\n"));
