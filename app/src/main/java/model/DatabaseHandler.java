@@ -38,9 +38,9 @@ public class DatabaseHandler {
 
 
 
-
-    public ArrayList<Review> loadReviews(){
-        //ToDo load reviews for certain Tavern
+    //ToDo method - load single review for certain user and certain tavern
+    //ToDo method - load reviews for certain Tavern - extra method?
+    public ArrayList<Review> loadAllReviews(){
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
         PaginatedList<Review> resultList = mapper.scan(Review.class, scanExpression);
         resultList.loadAllResults();
@@ -85,7 +85,7 @@ public class DatabaseHandler {
         return taverns;
     }
 
-
+    //ToDo update
     public void updateRatingForTavern(String tavernName){
         //1. load specific tavern
         //2. update rating number

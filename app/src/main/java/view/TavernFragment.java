@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -30,8 +31,9 @@ import model.Tavern;
  * Created by Daniel on 05.01.2017.
  */
 
-public class TavernFragment extends Fragment {
+public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
+    @BindView(R.id.swipe_refresh_taverns)   SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.recycler_view_taverns)   RecyclerView recyclerView;
     @BindView(R.id.progressBar_tavernList)  ProgressBar progressBar;
     @BindView(R.id.fab_refresh_taverns)     FloatingActionButton fab;
@@ -48,7 +50,21 @@ public class TavernFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_taverns, container, false);
         ButterKnife.bind(this, rootView);
 
+        swipeRefreshLayout.setOnRefreshListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    fab.setVisibility(View.INVISIBLE);
+                }
+                if (recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_IDLE) {
+                    fab.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         new FetchTavernDataTask().execute();
 
         return rootView;
@@ -71,7 +87,6 @@ public class TavernFragment extends Fragment {
 
         return false;
     }
-
 
 
 
@@ -112,6 +127,7 @@ public class TavernFragment extends Fragment {
             else{
                 progressBar.setVisibility(View.GONE);
                 recyclerView.setVisibility(View.VISIBLE);
+                swipeRefreshLayout.setRefreshing(false);
 
                 AdapterTaverns adapterTaverns = new AdapterTaverns(tavernArrayList);
                 recyclerView.setAdapter(adapterTaverns);
@@ -120,6 +136,11 @@ public class TavernFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onRefresh() {
+        new FetchTavernDataTask().execute();
+    }
 
 
     @OnClick(R.id.fab_refresh_taverns)

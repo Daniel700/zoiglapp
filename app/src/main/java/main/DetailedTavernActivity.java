@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import adapter.AdapterReviews;
 import adapter.InterfaceCommunicator;
@@ -78,12 +79,9 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
             setContent();
         }
 
-
-        //ToDo Handle Review Data...
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         swipeRefreshLayout.setOnRefreshListener(this);
         new LoadReviewsTask().execute();
-
     }
 
 
@@ -97,14 +95,15 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
     public void createReview(){
         SharedPreferences sharedPreferences = getSharedPreferences("InstallSettings", MODE_PRIVATE);
         boolean alreadyVoted = sharedPreferences.getBoolean(tavern.getName(), false);
-        if (!alreadyVoted){
+        //ToDo show message in info alert dialog if you already wrote a review or not
+        //if (!alreadyVoted){
             FragmentManager fm = getSupportFragmentManager();
             ReviewDialog reviewDialog = new ReviewDialog();
             reviewDialog.show(fm, "review-dialog");
-        }
-        else {
-            Snackbar.make(coordinatorLayout, "Du hast für diese Zoiglstube bereits eine Bewertung abgegeben", Snackbar.LENGTH_LONG).show();
-        }
+       // }
+       // else {
+        //    Snackbar.make(coordinatorLayout, "Du hast für diese Zoiglstube bereits eine Bewertung abgegeben", Snackbar.LENGTH_LONG).show();
+       // }
     }
 
 
@@ -191,7 +190,7 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
         protected Void doInBackground(Void... voids) {
             try {
                 DatabaseHandler handler = new DatabaseHandler(getApplicationContext());
-                reviewList = handler.loadReviews();
+                reviewList = handler.loadAllReviews();
                 Thread.sleep(500);
             }
             catch (Exception e){
@@ -210,8 +209,17 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
                 swipeRefreshLayout.setRefreshing(false);
                 recyclerView.setVisibility(View.VISIBLE);
 
-                AdapterReviews adapterReviews = new AdapterReviews(reviewList);
-                recyclerView.setAdapter(adapterReviews);
+                if (reviewList.size() > 0){
+                    AdapterReviews adapterReviews = new AdapterReviews(reviewList);
+                    recyclerView.setAdapter(adapterReviews);
+                }
+                else {
+                    ArrayList<Review> dummyList = new ArrayList<>();
+                    dummyList.add(new Review(tavern.getName(), "noUser", "Name", "Noch keine Rezensionen vorhanden", 0, new Date()));
+                    AdapterReviews adapterReviews = new AdapterReviews(dummyList);
+                    recyclerView.setAdapter(adapterReviews);
+                }
+
             }
         }
 

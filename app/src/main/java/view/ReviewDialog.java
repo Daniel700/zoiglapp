@@ -54,7 +54,7 @@ public class ReviewDialog extends AppCompatDialogFragment {
         rootView = inflater.inflate(R.layout.dialog_review,container, false);
         ButterKnife.bind(this, rootView);
 
-        //getDialog().setCanceledOnTouchOutside(true);
+        getDialog().setCanceledOnTouchOutside(false);
         getDialog().setTitle("Rezension verfassen");
 
         return rootView;
@@ -126,10 +126,11 @@ public class ReviewDialog extends AppCompatDialogFragment {
             try {
                 DatabaseHandler handler = new DatabaseHandler(getContext());
                 handler.saveReview(reviews[0]);
-                //ToDo update Tavern?
+                //ToDo first update Tavern and only if successful send review - otherwise show an error message
             }
             catch (Exception e){
                 error = e;
+                e.printStackTrace();
             }
             return null;
         }

@@ -67,7 +67,6 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
         unbinder = ButterKnife.bind(this, rootView);
         loadInterstitialAd();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         DateFormat dateFormat = DateFormat.getDateInstance();
         textView_Date.setText(dateFormat.format(new Date()));
 
@@ -77,7 +76,7 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
         spinnerMonths.setSelection(cal.get(Calendar.MONTH));
 
         swipeRefreshLayout.setOnRefreshListener(this);
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -146,10 +145,9 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
             AdapterCalendar adapterCalendar = new AdapterCalendar(openedCalendar);
             recyclerView.setAdapter(adapterCalendar);
         }
-        //show all dates
+        //show dates for selected month
         else {
-            AdapterCalendar adapterCalendar = new AdapterCalendar(DataHolder.getInstance().getCalendar());
-            recyclerView.setAdapter(adapterCalendar);
+            getCalendarDataForMonth(spinnerMonths.getSelectedItemPosition());
         }
     }
 
