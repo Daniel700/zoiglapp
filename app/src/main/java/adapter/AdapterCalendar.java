@@ -20,21 +20,23 @@ import model.DataHolder;
 import model.OpeningDate;
 import model.Tavern;
 
+import static misc.Constants.AD_POSITION;
+import static misc.Constants.ITEM_TYPE_AD;
+import static misc.Constants.ITEM_TYPE_NORMAL;
+
 
 /**
  * Created by Daniel on 10.02.2016.
  */
 public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final int AD_POSITION = 5;
-    private static final int ITEM_TYPE_NORMAL = 0;
-    private static final int ITEM_TYPE_AD = 1;
     protected static ArrayList<OpeningDate> calendarList;
     private Context context;
 
     public AdapterCalendar(ArrayList<OpeningDate> dates){
         this.calendarList = dates;
     }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -49,6 +51,7 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
             return new CalendarViewHolder(view);
         }
     }
+
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -92,8 +95,8 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
             AdRequest adRequest = new AdRequest.Builder().addTestDevice("2D18A580DC26C325F086D6FB9D84F765").build();
             ((AdViewHolder)holder).adView.loadAd(adRequest);
         }
-
     }
+
 
     @Override
     public int getItemCount() {
@@ -104,6 +107,7 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return calendarList.size() + additionalContent;
     }
 
+
     @Override
     public int getItemViewType(int position) {
         if (position % AD_POSITION == 0 && position > 0){
@@ -112,6 +116,7 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return ITEM_TYPE_NORMAL;
     }
 
+
     protected static int getRealPosition(int position) {
         if (position % AD_POSITION != 0 && position > AD_POSITION){
             return position - (position/AD_POSITION);
@@ -119,5 +124,6 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
         else
             return position;
     }
+
 
 }

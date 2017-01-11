@@ -1,87 +1,99 @@
 package adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
-import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import main.DetailedTavernActivity;
 import main.zoiglKalender.R;
 import model.Tavern;
+
+import static misc.Constants.AD_POSITION;
+import static misc.Constants.ITEM_TYPE_AD;
+import static misc.Constants.ITEM_TYPE_NORMAL;
 
 /**
  * Created by Daniel on 06.01.2017.
  */
 
-public class AdapterTaverns extends RecyclerView.Adapter<AdapterTaverns.ViewHolder>{
+public class AdapterTaverns extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static ArrayList<Tavern> tavernList;
+    protected static ArrayList<Tavern> tavernList;
+    private Context context;
 
     public AdapterTaverns(ArrayList<Tavern> taverns){
         this.tavernList = taverns;
     }
 
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if(viewType == ITEM_TYPE_AD) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.frame_adview, parent, false);
+            this.context = parent.getContext();
+            return new AdViewHolder(view);
+        }
+        else {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_taverns, parent, false);
+            this.context = parent.getContext();
+            return new TavernsViewHolder(view);
+        }
+    }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.card_view_taverns)               protected CardView cardView;
-        @BindView(R.id.card_view_tavern_name)           protected TextView name;
-        @BindView(R.id.card_view_tavern_location)       protected TextView location;
-        @BindView(R.id.card_view_tavern_ratingBar)      protected RatingBar ratingBar;
-        @BindView(R.id.card_view_tavern_ratingBarText)  protected TextView ratingBarText;
-        @BindView(R.id.card_view_tavern_realZoigl)      protected TextView realZoigl;
-        protected Context context;
 
-        public ViewHolder(View v) {
-            super(v);
-            ButterKnife.bind(this, v);
-            this.context = v.getContext();
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        if (getItemViewType(position) == ITEM_TYPE_NORMAL) {
+
+            Tavern currentTavern = tavernList.get(getRealPosition(position));
+            ((TavernsViewHolder)holder).name.setText(currentTavern.getName());
+            ((TavernsViewHolder)holder).location.setText(currentTavern.getStreet() + ", " + String.valueOf(currentTavern.getPostalCode()) + " " + currentTavern.getCity());
+            ((TavernsViewHolder)holder).ratingBar.setRating(currentTavern.getRating());
+            ((TavernsViewHolder)holder).ratingBarText.setText("(" + String.valueOf(Math.round(currentTavern.getRatingCount())) + ")");
+            if (currentTavern.isRealZoigl())
+                ((TavernsViewHolder)holder).realZoigl.setText(context.getString(R.string.echterZoigl));
+            else
+                ((TavernsViewHolder)holder).realZoigl.setText("");
+
+        }
+        else if (getItemViewType(position) == ITEM_TYPE_AD){
+            AdRequest adRequest = new AdRequest.Builder().addTestDevice("2D18A580DC26C325F086D6FB9D84F765").build();
+            ((AdViewHolder)holder).adView.loadAd(adRequest);
+            Log.e("test", ((AdViewHolder)holder).adView.toString());
         }
 
-        @OnClick(R.id.card_view_taverns)
-        public void detailViewTavern(){
-            Intent intent = new Intent(context, DetailedTavernActivity.class);
-            intent.putExtra("Tavern", tavernList.get(getLayoutPosition()));
-            context.startActivity(intent);
-        }
     }
 
 
     @Override
     public int getItemCount() {
-        return tavernList.size();
+        int additionalContent = 0;
+        if (tavernList.size() > 0 && tavernList.size() > AD_POSITION) {
+            additionalContent = tavernList.size() / AD_POSITION;
+        }
+        return tavernList.size() + additionalContent;
     }
 
     @Override
-    public AdapterTaverns.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_taverns, parent, false);
-        return new AdapterTaverns.ViewHolder(view);
+    public int getItemViewType(int position) {
+        if (position % AD_POSITION == 0 && position > 0){
+            return ITEM_TYPE_AD;
+        }
+        return ITEM_TYPE_NORMAL;
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Tavern currentTavern = tavernList.get(position);
-        holder.name.setText(currentTavern.getName());
-        holder.location.setText(currentTavern.getStreet() + ", " + String.valueOf(currentTavern.getPostalCode()) + " " + currentTavern.getCity());
-        holder.ratingBar.setRating(currentTavern.getRating());
-        holder.ratingBarText.setText("(" + String.valueOf(Math.round(currentTavern.getRatingCount())) + ")");
-        if (currentTavern.isRealZoigl())
-            holder.realZoigl.setText(holder.context.getString(R.string.echterZoigl));
+    protected static int getRealPosition(int position) {
+        if (position % AD_POSITION != 0 && position > AD_POSITION){
+            return position - (position/AD_POSITION);
+        }
         else
-            holder.realZoigl.setText("");
-
+            return position;
     }
-
-
-
 
 }

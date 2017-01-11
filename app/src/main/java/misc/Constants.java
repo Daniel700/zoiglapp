@@ -9,4 +9,8 @@ public class Constants {
     public static final String LOGGER_DEBUG = "DEBUG";
     public static final String WEEKDAYS[] = {"Wochentag", "Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
 
+    public static final int AD_POSITION = 5;
+    public static final int ITEM_TYPE_NORMAL = 0;
+    public static final int ITEM_TYPE_AD = 1;
+
 }
