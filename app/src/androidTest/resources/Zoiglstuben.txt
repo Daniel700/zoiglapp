@@ -1,4 +1,91 @@
 Name + street + plz + city + openingHours + realZoigl + url + owner + phoneNumber + mobilePhoneNumber + email
 
-Alter Pfarrhof + Pfarrplatz 14 + 92660 + Altenstadt + n/a + true + www.pfarrhof-altenstadt.de + Anni Loistl + n/a + 0176/23367755 + n/a
+Alter Pfarrhof + Pfarrplatz 14 + 92660 + Altenstadt + n/a + true + http://www.pfarrhof-altenstadt.de/ + Anni Loistl + n/a + 0176/23367755 + n/a
+
+Am Letten + Bergstraße 19 + 92703 + Reuth bei Erbendorf + Freitag ab 18 Uhr - Sonntag ab 16 Uhr - Montag ab 18 Uhr + false + http://www.zoigl-am-letten.de/ + Alfons Höcht + 09683/929924 + 0170/3306330 + n/a 
+
 Am Moierhof + Altenparkstein 7 + 92665 + Kirchendemenreuth + Freitag ab 17 Uhr - Samstag ab 17 Uhr - Sonntag ab 14 Uhr - Montag ab 17 Uhr + false + http://www.moierhof-zoigl.de/ + n/a + n/a + 0176/62447377 + info@moierhof-zoigl.de
+
+Bahler + Marktplatz 12 + 92670 + Neuhaus + Geöffnet ab 10 Uhr + true + http://www.bahler-zoigl.de/ + Thomas Witt + 09681/3916 + n/a + info@bahler-zoigl.de
+
+Beim Brucksaler + Bahnhofstraße 13 + 92660 + Neustadt an der Waldnaab + Geöffnet ab 10 Uhr + false + http://www.brucksaler.de/ + Kerstin & Michael Lang + 09602/920135 + n/a + zoigl@brucksaler.de
+
+Beim Gloser + Lehnerberg 2 + 92670 + Windischeschenbach + Freitag ab 14 Uhr - Samstag ab 10 Uhr - Sonntag ab 10 Uhr - Montag ab 14 Uhr + true +  http://www.beimgloser.de/ + Familie Popp + 09681/3170 + n/a + glaspopp@t-online.de
+
+Beim Heigl + Schlossgasse 5 + 92718 + Schirmitz + n/a + false + n/a + Familie Heigl + 0961/44437 + n/a
+
+Beim Meislbeck + Bräugasse 20 + 92681 + Erbendorf + n/a + false + https://www.facebook.com/Meislbeck/ + Horst Kölbl + 09682/1591 + n/a + meislbeck@icloud.com
+
+Beim Roidl + Marktplatz 6 + 95689 + Neualbenreuth + n/a + false + n/a + Familie Schöner + 09638/279 + n/a + karlschoener@t-online.de
+
+Beim Strehern + Tillystraße 4 + 92693 + Eslarn + Freitag ab 14 Uhr - Samstag ab 14 Uhr - Sonntag ab 11:30 Uhr + true + http://www.zoiglstum.de/ + Familie Albert Grießl + 09653/1355 + n/a + griessl@zoiglstum.de
+
+Binner + Kleiau 3 + 92670 + Windischeschenbach + Freitag ab 10 Uhr - Samstag ab 10 Uhr - Sonntag ab 10 Uhr - Montag ab 10 Uhr + true + http://www.binnergeist.de/ + Robert Sperber + 09681/1498 + n/a + RobertSperber@binnergeist.de
+
+D'Eisenbahn + Bahnhofstraße 18 + 92648 + Vohenstrauß + Freitag bis Montag: 16 - 24 Uhr - warme Speisen bis 21 Uhr + false + http://www.d-eisenbahn.de/ + Annett Schittenhelm + 09651/924126 + n/a + info@d-eisenbahn.de
+
+Dameradl + Markt 66 + 95679 + Waldershof + Montag bis Freitag: 18:30 bis 20:00 Uhr + false + https://www.facebook.com/Dameradl/ + Familie Kaiser + 09231/72400 + n/a + n/a
+
+Fiedlschneider + Stadtplatz 15 + 92670 + Windischeschenbach + n/a + true + http://www.fiedlschneider-zoigl.de/ + Silvia Köllner + n/a + 0152/29580271 + kontakt@fiedlschneider-zoigl.de
+
+Haner + Botzersreuth 3 + 92715 + Püchersreuth + n/a + false + n/a + Familie Witt +  09602/8510 + n/a + n/a
+
+Hartwich-Zoigl + Angergasse 1 + 95666 + Mitterteich + n/a + true + http://www.hartwich-zoigl.de/ + Thomas Seitz-Hartwich - 09633/2308 oder 09633/918616 + n/a + info@hartwich-zoigl.de
+
+Käck'n + Marktplatz 18 + 92670 + Neuhaus + Freitag bis Montag ab 10 Uhr + true + https://www.facebook.com/kaecknzoigl/ + Michael Kronwald + 09681/2312 + n/a + zoiglbua@gmail.com
+
+Kramer-Wolf + Tirschenreuther Straße 4 + 95685 + Falkenberg + n/a + true + http://www.zoigl-kramer-wolf.de/ + Wolfgang Fischer + 09637/328 + n/a + info@zoigl-kramer-wolf.de
+
+Lingl-Zoigl + Burgstraße 1 + 92670 + Neuhaus + n/a + true + http://www.lingl-zoigl.de/ + Klaus Bauer + 09681/1313 + n/a + info@lingl-zoigl.de
+
+Lugert + Bachgasse 12 + 95666 + Mitterteich + n/a + true + http://www.zoigl-lugert.de/ + n/a + 09633/919207 oder 09633/3497 + n/a + family.lugert@t-online.de
+
+Oppl + Oberer Marktplatz 11 + 95666 + Mitterteich + Dienstag bis Samstag: 09:30 Uhr bis 01:00 Uhr + true + http://www.oppl-zoigl.de/ + Wilhelm Oppl + 09633/3326 + n/a + info@oppl-zoigl.de
+
+Postgassl + Bahnhofstraße 27 + 95643 + Tirschenreuth + Geöffnet ab 15 Uhr + false + http://zoigl.gmeiner.de/ + Johann Gmeiner + 09631/1604 + n/a + johann@gmeiner.de
+
+Schafferhof + Burgstraße 6 + 92670 + Neuhaus + Freitag ab 14 Uhr - Samstag bis Montag ab 10 Uhr - Feiertags ab 10 Uhr + true + http://www.schafferhof-zoigl.de/ + Reinhard Fütterer + 09681/917160 + n/a + info@schafferhof-zoigl.de
+
+Schlosshof-Zoigl + Schloßhof 13 + 92670 + Windischeschenbach + Geöffnet ab 10 Uhr + true + http://www.schlosshof-zoigl.de/ + Elisabeth Weiß + 09681/2660 + n/a + kontakt@schlosshof-zoigl.de
+
+Schoilmichl + Marktplatz 20 + 92670 + Neuhaus + n/a + true + http://www.schoilmichl.de/ + Manfred Punzmann + 09681/1397 + n/a + schoilmichl@t-online.de
+
+Schwoazhansl-Zoigl + Tirschenreutherstraße 7 + 95685 + Falkenberg + Freitag ab 17 Uhr - Samstag ab 15 Uhr - Sonntag ab 15 Uhr - Montag ab 17 Uhr + true + http://www.schwoazhansl-zoigl.de/ + Wolfgang Flieger + n/a + 0172/9106756 + info@schwoazhansl-zoigl.de
+
+Stefflwirt + Kirchplatz 7 + 95676 + Wiesau + Donnerstag ab 11:30 Uhr - Freitag ab 11:30 Uhr - Samstag ab 16 Uhr - Sonntag ab 10 Uhr + false + https://www.facebook.com/Zoigl-Stefflwirt-Wiesau-249127448523145/ + n/a + 09634/1215 + n/a + hans.summer@t-online.de
+
+Stromhias + Jahnstraße 21 + 92696 + Flossenbürg + Dienstag bis Freitag ab 11 Uhr - Samstag ab 15 Uhr + false + http://www.stromhias.de/ + Familie Niekrawietz + 09603/9030025 + n/a + info@stromhias.de
+
+Teicher + Marktplatz 2 – 4 + 92670 + Neuhaus + Geöffnet ab 10 Uhr + true + http://www.teicher-zoigl.de/ + Jürgen Punzmann + 09681/918095 + n/a + info@teicher-zoigl.de
+
+Wagerer-Zoigl + Lichtensternstraße 8 + 92711 + Parkstein + n/a + false + n/a + Dieter Menzl + 09602/6695 + n/a + dieter-else.menzl@t-online.de
+
+Wolfadl + Gumpener Weg 1 + 95685 + Falkenberg + Geöffnet ab 10 Uhr + false + http://www.wolfadl-zoigl.de/ + Manfred Betz + n/a + 0157/72067495 + wolfadl@web.de
+
+Wolframstub'n + Hauptstraße 10 + 92670 + Windischeschenbach + n/a + false + http://www.wolframstubn.de/ + Georg Forster + 09681/1241 + n/a + info@biobaeckerei.de
+
+Zoiglbauer + Kirchplatz 3 + 95666 + Mitterteich + Mai bis September ab 11 Uhr - Oktober bis April ab 17 Uhr + false + http://www.zoiglbauer.de/ + n/a + 09633/923537 + n/a + info@zoiglbauer.de
+
+Zum Binnerlindl + Raiffeisenstraße 1 + 92702 + Kohlberg + Freitag ab 16 Uhr - Samstag ab 16 Uhr - Sonntag ab 10 Uhr + false + http://www.zoigl-stubn-kohlberg.de/ + Rudolf Götz + 09608/91212 oder 09608/923525 + n/a + info@Zoigl-Stubn-Kohlberg.de
+
+Zum Boderfuchs + Hospitalstraße 5 + 95643 + Tirschenreuth + Geöffnet ab 15 Uhr + false + http://www.zoigl-tirschenreuth.de/ + Oliver Bergner und Bernhard Bäuml + n/a + 0171/2889204 + baeuml@online.de
+
+Zum Glöckerlbauer + Schustermooslohe 31 + 92637 + Weiden + Freitag ab 17 Uhr - Samstag ab 15 Uhr - Sonntag ab 15 Uhr + false + http://zoigl-stubn-in-der-schustermooslohe.npage.de/ + Bruni Bergler + 0961/3819704 + n/a + bruni-bergler@t-online.de
+
+Zum Gogerer + Freiherr-von-Lichtenstern-Straße 20 + 92685 + Floß + Montag ab 16 Uhr - Mittwoch ab 17 Uhr - Donnerstag 11:00 bis 13:30 und ab 16 Uhr - Freitag ab 16 Uhr - Samstag ab 16 Uhr - Sonntag 10:00 bis 12:00 und ab 16 Uhr + false + http://www.zumgogerer.de/ + Wolfgang Aichinger + 09603/2357 + n/a + zumgogerer@web.de
+
+Zum Mundl + Neustädter Straße 2 + 92721 + Störnstein + Geöffnet ab 16 Uhr + false + https://www.facebook.com/Zoiglstubn-zum-Mundl-183573944988297/ + Familie Schultes + 09602/7329 + n/a + n/a
+
+Zum Posterer + An der Alten Post 5 + 92670 + Windischeschenbach + Geöffnet ab 14 Uhr + false + http://www.zum-posterer.de/ + Mona Gürtler + n/a + 0157/70329792 + kontakt@zum-posterer.de
+
+Zum Rechersimer + Röthenbach 3 + 92717 + Reuth bei Erbendorf + Geöffnet ab 15 Uhr - Sonntags ab 11:30 Uhr + false + http://www.rechersimer.de/ + Maria Käß + 09683/343 + n/a + info@rechersimer.de
+
+Zum Roud'n + Stadtplatz 3 + 92670 + Windischeschenbach + n/a + true + http://www.zoiglbier.de/die-brauer/windischeschenbach/zum-roudn/ + Anton Heinl + 09681/2185 + n/a + anton.heinl@t-online.de
+
+Zum Sprea'n + Dr.-Otto-Seidel-Str. 15 + 95652 + Waldsassen + n/a + false + http://www.zoigl-waldsassen.de/ + Thomas Tomala + 09632/923284 + n/a + info@zoigl-waldsassen.de
+
+Zum Stich'n + Untere Bachgasse 6 + 92637 + Weiden + Donnerstag bis Sonntag ab 17 Uhr + false + http://www.zoigl-weiden.de/ + Petra Keikuth + n/a + 0171/5277377 + info@zoigl-weiden.de
+
+Zum Vinzenz + Dorfhammerles 21 + 92711 + Hammerles + Donnerstag bis Samstag ab 17 Uhr - Sonntag ab 13 Uhr - Montag ab 17 Uhr + false + http://www.zum-vinzenz.de/ + Manfred Neidhardt + 09602/616716 + n/a + mail@zum-vinzenz.de
+
+Zum Waldhauser + Freyung 26 + 92660 + Neustadt an der Waldnaab + n/a + false + n/a + Familie Schmid + 09602/939898 + n/a + n/a
