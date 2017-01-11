@@ -11,7 +11,7 @@ Alter Pfarrhof  +   07.10.2017  +   11.10.2017
 Alter Pfarrhof  +   04.11.2017  +   08.11.2017
 Alter Pfarrhof  +   02.12.2017  +   06.12.2017
 
-Am Letten
+Am Letten       +   
 
 Am Moierhof     +   20.01.2017  +   23.01.2017
 Am Moierhof     +   17.02.2017  +   20.02.2017
@@ -29,45 +29,603 @@ Am Moierhof     +   13.10.2017  +   16.10.2017
 Am Moierhof     +   10.11.2017  +   13.11.2017
 Am Moierhof     +   15.12.2017  +   18.12.2017
 
-Bahler
-Beim Brucksaler
-Beim Gloser
-Beim Heigl 
-Beim Meislbeck
-Beim Roidl
-Beim Strehern 
-Binner
-D'Eisenbahn
-Dameradl
-Fiedlschneider
-Haner
-Hartwich-Zoigl
-Käck'n 
-Kramer-Wolf
-Lingl-Zoigl
-Lugert
-Oppl 
-Postgassl
-Schafferhof 
-Schlosshof-Zoigl
-Schoilmichl 
-Schwoazhansl-Zoigl
-Stefflwirt 
-Stromhias 
-Teicher 
-Wagerer-Zoigl 
-Wolfadl 
-Wolframstub'n 
-Zoiglbauer 
-Zum Binnerlindl
-Zum Boderfuchs
-Zum Glöckerlbauer
-Zum Gogerer
-Zum Mundl
-Zum Posterer
-Zum Rechersimer
-Zum Roud'n
-Zum Sprea'n 
-Zum Stich'n 
-Zum Vinzenz 
-Zum Waldhauser
+Bahler          +   20.01.2017  +   23.01.2017
+Bahler          +   03.02.2017  +   06.02.2017
+Bahler          +   24.02.2017  +   28.02.2017
+Bahler          +   07.04.2017  +   10.04.2017
+Bahler          +   25.05.2017  +   29.05.2017
+Bahler          +   15.06.2017  +   19.06.2017
+Bahler          +   21.07.2017  +   24.07.2017
+Bahler          +   25.08.2017  +   28.08.2017
+Bahler          +   29.09.2017  +   03.10.2017
+Bahler          +   03.11.2017  +   06.11.2017
+Bahler          +   01.12.2017  +   04.12.2017
+
+Beim Brucksaler +   20.01.2017  +   23.01.2017
+Beim Brucksaler +   17.02.2017  +   20.02.2017
+Beim Brucksaler +   17.03.2017  +   20.03.2017
+Beim Brucksaler +   21.04.2017  +   24.04.2017
+Beim Brucksaler +   19.05.2017  +   22.05.2017
+Beim Brucksaler +   16.06.2017  +   19.06.2017
+Beim Brucksaler +   07.07.2017  +   10.07.2017
+Beim Brucksaler +   29.07.2017  +   29.07.2017
+Beim Brucksaler +   15.09.2017  +   18.09.2017
+Beim Brucksaler +   13.10.2017  +   16.10.2017
+Beim Brucksaler +   10.11.2017  +   13.11.2017
+Beim Brucksaler +   01.12.2017  +   04.12.2017
+
+Beim Gloser     +   06.01.2017  +   09.01.2017
+Beim Gloser     +   03.02.2017  +   06.02.2017
+Beim Gloser     +   03.03.2017  +   06.03.2017
+Beim Gloser     +   17.03.2017  +   20.03.2017
+Beim Gloser     +   31.03.2017  +   03.04.2017
+Beim Gloser     +   28.04.2017  +   01.05.2017 
+Beim Gloser     +   12.05.2017  +   15.05.2017
+Beim Gloser     +   02.06.2017  +   05.06.2017
+Beim Gloser     +   30.06.2017  +   03.07.2017
+Beim Gloser     +   21.07.2017  +   24.07.2017
+Beim Gloser     +   04.08.2017  +   07.08.2017
+Beim Gloser     +   25.08.2017  +   28.08.2017
+Beim Gloser     +   08.09.2017  +   11.09.2017
+Beim Gloser     +   29.09.2017  +   03.10.2017
+Beim Gloser     +   27.10.2017  +   30.10.2017
+Beim Gloser     +   17.11.2017  +   20.11.2017
+Beim Gloser     +   08.12.2017  +   11.12.2017
+
+Beim Gutbauern  +   20.01.2017  +   23.01.2017    
+Beim Gutbauern  +   17.02.2017  +   20.02.2017 
+Beim Gutbauern  +   28.04.2017  +   01.05.2017 
+Beim Gutbauern  +   25.05.2017  +   28.05.2017 
+Beim Gutbauern  +   16.06.2017  +   19.06.2017 
+Beim Gutbauern  +   21.07.2017  +   24.07.2017 
+Beim Gutbauern  +   04.08.2017  +   07.08.2017
+Beim Gutbauern  +   01.09.2017  +   04.09.2017
+Beim Gutbauern  +   20.10.2017  +   23.10.2017
+Beim Gutbauern  +   24.11.2017  +   27.11.2017
+Beim Gutbauern  +   01.12.2017  +   03.12.2017
+Beim Gutbauern  +   08.12.2017  +   10.12.2017
+Beim Gutbauern  +   15.12.2017  +   17.12.2017
+
+Beim Heigl      +   13.01.2017  +   16.01.2017
+Beim Heigl      +   10.02.2017  +   13.02.2017
+Beim Heigl      +   10.03.2017  +   13.03.2017
+Beim Heigl      +   07.04.2017  +   10.04.2017
+Beim Heigl      +   12.05.2017  +   15.05.2017
+Beim Heigl      +   09.06.2017  +   12.06.2017
+Beim Heigl      +   14.07.2017  +   17.07.2017
+Beim Heigl      +   11.08.2017  +   14.08.2017
+Beim Heigl      +   08.09.2017  +   11.09.2017
+Beim Heigl      +   13.10.2017  +   16.10.2017
+Beim Heigl      +   10.11.2017  +   13.11.2017
+Beim Heigl      +   08.12.2017  +   11.12.2017
+
+Beim Meislbeck  +   13.01.2017  +   16.01.2017
+Beim Meislbeck  +   10.02.2017  +   13.02.2017
+Beim Meislbeck  +   10.03.2017  +   13.03.2017
+Beim Meislbeck  +   07.04.2017  +   10.04.2017
+Beim Meislbeck  +   12.05.2017  +   15.05.2017
+Beim Meislbeck  +   09.06.2017  +   12.06.2017
+Beim Meislbeck  +   07.07.2017  +   10.07.2017
+Beim Meislbeck  +   11.08.2017  +   14.08.2017
+Beim Meislbeck  +   08.09.2017  +   11.09.2017
+Beim Meislbeck  +   13.10.2017  +   16.10.2017
+Beim Meislbeck  +   10.11.2017  +   13.11.2017
+Beim Meislbeck  +   08.12.2017  +   11.12.2017
+
+Beim Roidl      +   04.01.2017  +   07.01.2017
+Beim Roidl      +   01.02.2017  +   04.02.2017
+Beim Roidl      +   01.03.2017  +   04.03.2017
+Beim Roidl      +   05.04.2017  +   08.04.2017
+Beim Roidl      +   07.06.2017  +   10.06.2017
+Beim Roidl      +   05.07.2017  +   08.07.2017
+Beim Roidl      +   02.08.2017  +   05.08.2017
+Beim Roidl      +   06.09.2017  +   09.09.2017
+Beim Roidl      +   04.10.2017  +   07.10.2017
+Beim Roidl      +   02.11.2017  +   04.11.2017
+Beim Roidl      +   06.12.2017  +   10.12.2017
+Beim Roidl      +   17.12.2017  +   17.12.2017
+
+Beim Strehern   +   06.01.2017  +   08.01.2017
+Beim Strehern   +   27.01.2017  +   29.01.2017
+Beim Strehern   +   27.01.2017  +   29.01.2017
+Beim Strehern   +   17.02.2017  +   19.02.2017
+Beim Strehern   +   03.03.2017  +   05.03.2017
+Beim Strehern   +   24.03.2017  +   26.03.2017
+Beim Strehern   +   07.04.2017  +   09.04.2017
+Beim Strehern   +   28.04.2017  +   30.04.2017
+Beim Strehern   +   19.05.2017  +   21.05.2017
+Beim Strehern   +   03.06.2017  +   05.06.2017 
+Beim Strehern   +   16.06.2017  +   18.06.2017
+Beim Strehern   +   07.07.2017  +   09.07.2017
+Beim Strehern   +   28.07.2017  +   30.07.2017
+Beim Strehern   +   25.08.2017  +   27.08.2017
+Beim Strehern   +   15.09.2017  +   17.09.2017
+Beim Strehern   +   29.09.2017  +   01.10.2017
+Beim Strehern   +   14.10.2017  +   16.10.2017 
+Beim Strehern   +   10.11.2017  +   12.11.2017 
+Beim Strehern   +   24.11.2017  +   26.11.2017
+Beim Strehern   +   15.12.2017  +   17.12.2017
+Beim Strehern   +   05.01.2018  +   07.01.2018
+
+Binner          +   27.01.2017  +   30.01.2017
+Binner          +   24.02.2017  +   27.02.2017
+Binner          +   24.03.2017  +   27.03.2017
+Binner          +   21.04.2017  +   24.04.2017
+Binner          +   26.05.2017  +   29.05.2017
+Binner          +   16.06.2017  +   19.06.2017
+Binner          +   21.07.2017  +   24.07.2017
+Binner          +   25.08.2017  +   28.08.2017
+Binner          +   22.09.2017  +   25.09.2017
+Binner          +   20.10.2017  +   23.10.2017
+Binner          +   24.11.2017  +   27.11.2017
+Binner          +   27.12.2017  +   30.12.2017
+
+D'Eisenbahn     +   20.01.2017  +   23.01.2017
+D'Eisenbahn     +   17.02.2017	+	20.02.2017
+D'Eisenbahn     +   24.02.2017  +   24.02.2017
+D'Eisenbahn     +   10.03.2017	+	13.03.2017
+D'Eisenbahn     +   19.03.2017  +   19.03.2017
+D'Eisenbahn     +   25.03.2017  +   25.03.2017
+D'Eisenbahn     +   14.04.2017	+	17.04.2017
+
+Dameradl        +   26.05.2017  +   28.05.2017
+Dameradl        +   18.08.2017  +   20.08.2017
+
+Fiedlschneider  +   06.01.2017  +   09.01.2017   
+Fiedlschneider  +   17.02.2017  +   20.02.2017
+Fiedlschneider  +   17.03.2017  +   20.03.2017
+Fiedlschneider  +   14.04.2017  +   17.04.2017
+Fiedlschneider  +   12.05.2017  +   15.05.2017 
+Fiedlschneider  +   09.06.2017  +   12.06.2017
+Fiedlschneider  +   07.07.2017  +   10.07.2017
+Fiedlschneider  +   28.07.2017  +   31.07.2017  
+Fiedlschneider  +   15.09.2017  +   18.09.2017
+Fiedlschneider  +   06.10.2017  +   09.10.2017
+Fiedlschneider  +   03.11.2017  +   06.11.2017
+Fiedlschneider  +   08.12.2017  +   11.12.2017
+
+Haner           +   21.01.2017  +   22.01.2017
+Haner           +   18.02.2017  +   19.02.2017
+Haner           +   18.03.2017  +   19.03.2017
+Haner           +   15.04.2017  +   16.04.2017
+Haner           +   20.05.2017  +   21.05.2017
+Haner           +   17.06.2017  +   18.06.2017
+Haner           +   15.07.2017  +   16.07.2017
+Haner           +   19.08.2017  +   20.08.2017
+Haner           +   16.09.2017  +   17.09.2017
+Haner           +   28.10.2017  +   29.10.2017
+Haner           +   18.11.2017  +   19.11.2017
+Haner           +   16.12.2017  +   17.12.2017
+
+Hartwich-Zoigl  +   24.01.2017  +   28.01.2017
+Hartwich-Zoigl  +   14.03.2017  +   18.03.2017
+Hartwich-Zoigl  +   16.05.2017  +   20.05.2017
+Hartwich-Zoigl  +   27.06.2017  +   01.07.2017
+Hartwich-Zoigl  +   29.08.2017  +   02.09.2017
+Hartwich-Zoigl  +   17.10.2017  +   21.10.2017
+Hartwich-Zoigl  +   28.11.2017  +   02.12.2017  
+
+Käck'n          +   06.01.2017  +   09.01.2017
+Käck'n          +   10.02.2017  +   13.02.2017
+Käck'n          +   24.03.2017  +   27.03.2017
+Käck'n          +   21.04.2017  +   24.04.2017
+Käck'n          +   02.06.2017  +   05.06.2017
+Käck'n          +   07.07.2017  +   10.07.2017
+Käck'n          +   11.08.2017  +   15.08.2017
+Käck'n          +   22.09.2017  +   25.09.2017
+Käck'n          +   27.10.2017  +   30.10.2017
+Käck'n          +   08.12.2017  +   11.12.2017
+
+Kramer-Wolf     +   06.01.2017  +   09.01.2017
+Kramer-Wolf     +   27.01.2017  +   30.01.2017
+Kramer-Wolf     +   17.02.2017  +   20.02.2017
+Kramer-Wolf     +   03.03.2017  +   06.03.2017
+Kramer-Wolf     +   24.03.2017  +   27.03.2017
+Kramer-Wolf     +   07.04.2017  +   10.04.2017
+Kramer-Wolf     +   05.05.2017  +   08.05.2017
+Kramer-Wolf     +   19.05.2017  +   22.05.2017
+Kramer-Wolf     +   16.06.2017  +   19.06.2017
+Kramer-Wolf     +   07.07.2017  +   10.07.2017
+Kramer-Wolf     +   21.07.2017  +   24.07.2017
+Kramer-Wolf     +   25.08.2017  +   28.08.2017
+Kramer-Wolf     +   22.09.2017  +   25.09.2017
+Kramer-Wolf     +   06.10.2017  +   09.10.2017
+Kramer-Wolf     +   27.10.2017  +   30.10.2017
+Kramer-Wolf     +   17.11.2017  +   20.11.2017
+Kramer-Wolf     +   01.12.2017  +   04.12.2017
+
+Lingl-Zoigl     +   27.01.2017  +   30.01.2017
+Lingl-Zoigl     +   10.03.2017  +   13.03.2017
+Lingl-Zoigl     +   28.04.2017  +   01.05.2017
+Lingl-Zoigl     +   02.06.2017  +   05.06.2017
+Lingl-Zoigl     +   30.06.2017  +   03.07.2017
+Lingl-Zoigl     +   28.07.2017  +   31.07.2017
+Lingl-Zoigl     +   15.09.2017  +   18.09.2017
+Lingl-Zoigl     +   20.10.2017  +   23.10.2017
+Lingl-Zoigl     +   17.11.2017  +   20.11.2017
+Lingl-Zoigl     +   15.12.2017  +   18.12.2017
+
+Lugert          +   02.01.2017  +   07.01.2017
+Lugert          +   17.02.2017  +   24.02.2017
+Lugert          +   28.04.2017  +   05.05.2017
+Lugert          +   08.07.2017  +   09.07.2017 
+Lugert          +   21.07.2017  +   28.07.2017
+Lugert          +   08.09.2017  +   15.09.2017
+Lugert          +   24.09.2017  +   24.09.2017
+Lugert          +   27.10.2017  +   03.11.2017
+
+Oppl            +   07.02.2017	+ 	11.02.2017
+Oppl            +   07.03.2017	+ 	11.03.2017
+Oppl            +   11.04.2017	+ 	15.04.2017
+Oppl            +   13.06.2017	+ 	17.06.2017
+Oppl            +   08.07.2017	+ 	09.07.2017
+Oppl            +   08.08.2017	+ 	12.08.2017
+Oppl            +   24.09.2017  +   24.09.2017
+Oppl            +   10.10.2017	+ 	14.10.2017
+Oppl            +   21.11.2017	+ 	25.11.2017
+
+Postgassl       +   06.01.2017 + 09.01.2017
+Postgassl       +   03.02.2017 + 06.02.2017
+Postgassl       +   03.03.2017 + 06.03.2017
+Postgassl       +   07.04.2017 + 10.04.2017
+Postgassl       +   05.05.2017 + 08.05.2017
+Postgassl       +   09.06.2017 + 12.06.2017
+Postgassl       +   07.07.2017 + 10.07.2017
+Postgassl       +   04.08.2017 + 07.08.2017
+Postgassl       +   08.09.2017 + 11.09.2017
+Postgassl       +   06.10.2017 + 09.10.2017
+Postgassl       +   03.11.2017 + 06.11.2017
+Postgassl       +   01.12.2017 + 04.12.2017
+
+Schafferhof     +   03.02.2017  +   06.02.2017
+Schafferhof     +   03.03.2017  +   06.03.2017
+Schafferhof     +   13.04.2017  +   17.04.2017
+Schafferhof     +   05.05.2017  +   08.05.2017
+Schafferhof     +   25.05.2017  +   29.05.2017
+Schafferhof     +   09.06.2017  +   12.06.2017
+Schafferhof     +   14.07.2017  +   17.07.2017
+Schafferhof     +   11.08.2017  +   15.08.2017
+Schafferhof     +   01.09.2017  +   04.09.2017
+Schafferhof     +   29.09.2017  +   03.10.2017
+Schafferhof     +   10.11.2017  +   13.11.2017
+Schafferhof     +   27.12.2017  +   30.12.2017
+
+Schlosshof-Zoigl    +   20.01.2017    +   24.01.2017
+Schlosshof-Zoigl    +   17.02.2017    +   21.02.2017
+Schlosshof-Zoigl    +   10.03.2017    +   14.03.2017
+Schlosshof-Zoigl    +   21.04.2017    +   25.04.2017
+Schlosshof-Zoigl    +   19.05.2017    +   23.05.2017
+Schlosshof-Zoigl    +   23.06.2017    +   27.06.2017
+Schlosshof-Zoigl    +   14.07.2017    +   18.07.2017
+Schlosshof-Zoigl    +   18.08.2017    +   22.08.2017
+Schlosshof-Zoigl    +   15.09.2017    +   19.09.2017
+Schlosshof-Zoigl    +   13.10.2017    +   17.10.2017
+Schlosshof-Zoigl    +   17.11.2017    +   21.11.2017
+Schlosshof-Zoigl    +   15.12.2017    +   19.12.2017
+
+Schoilmichl         +   01.01.2017  +   04.01.2017
+Schoilmichl         +   17.02.2017  +   20.02.2017
+Schoilmichl         +   31.03.2017  +   03.04.2017
+Schoilmichl         +   12.05.2017  +   15.05.2017
+Schoilmichl         +   15.06.2017  +   19.06.2017
+Schoilmichl         +   28.07.2017  +   31.07.2017
+Schoilmichl         +   18.08.2017  +   21.08.2017
+Schoilmichl         +   06.10.2017  +   09.10.2017
+Schoilmichl         +   10.11.2017  +   13.11.2017
+Schoilmichl         +   27.12.2017  +   30.12.2017
+
+Schwoazhansl-Zoigl  +   13.01.2017  +   16.01.2017
+Schwoazhansl-Zoigl  +   03.02.2017  +   06.02.2017
+Schwoazhansl-Zoigl  +   10.03.2017  +   13.03.2017
+Schwoazhansl-Zoigl  +   31.03.2017  +   03.04.2017
+Schwoazhansl-Zoigl  +   21.04.2017  +   24.04.2017
+Schwoazhansl-Zoigl  +   02.06.2017  +   05.06.2017
+Schwoazhansl-Zoigl  +   23.06.2017  +   26.06.2017
+Schwoazhansl-Zoigl  +   14.07.2017  +   17.07.2017
+Schwoazhansl-Zoigl  +   04.08.2017  +   07.08.2017
+Schwoazhansl-Zoigl  +   18.08.2017  +   21.08.2017
+Schwoazhansl-Zoigl  +   08.09.2017  +   11.09.2017
+Schwoazhansl-Zoigl  +   20.10.2017  +   23.10.2017
+Schwoazhansl-Zoigl  +   03.11.2017  +   06.11.2017
+Schwoazhansl-Zoigl  +   24.11.2017  +   27.11.2017
+Schwoazhansl-Zoigl  +   27.12.2017  +   30.12.2017
+
+Stefflwirt          +   05.01.2017  +   08.01.2017
+Stefflwirt          +   02.02.2017  +   05.02.2017
+Stefflwirt          +   02.03.2017  +   05.03.2017
+Stefflwirt          +   30.03.2017  +   02.04.2017
+Stefflwirt          +   20.04.2017  +   23.04.2017
+Stefflwirt          +   25.05.2017  +   28.05.2017
+Stefflwirt          +   22.06.2017  +   25.06.2017
+Stefflwirt          +   20.07.2017  +   23.07.2017
+Stefflwirt          +   17.08.2017  +   20.08.2017
+Stefflwirt          +   14.09.2017  +   17.09.2017
+Stefflwirt          +   15.10.2017  +   16.10.2017
+Stefflwirt          +   09.11.2017  +   12.11.2017
+Stefflwirt          +   07.12.2017  +   10.12.2017
+
+Stromhias           +   10.01.2017      +    	14.01.2017 
+Stromhias           +   07.02.2017      +    	11.02.2017 
+Stromhias           +   07.03.2017      +    	11.03.2017
+Stromhias           +   04.04.2017      +    	08.04.2017 
+Stromhias           +   09.05.2017      +   	13.05.2017
+Stromhias           +   06.06.2017      +    	10.06.2017 
+Stromhias           +   04.07.2017      +    	08.07.2017 
+Stromhias           +   15.08.2017      +    	19.08.2017
+Stromhias           +   19.09.2017      +    	23.09.2017 
+Stromhias           +   16.10.2017      +    	16.10.2017
+Stromhias           +   17.10.2017      +    	21.10.2017
+Stromhias           +   14.11.2017      +   	18.11.2017
+
+Teicher             +   13.01.2017  +   16.01.2017
+Teicher             +   24.02.2017  +   28.02.2017
+Teicher             +   17.03.2017  +   20.03.2017
+Teicher             +   14.04.2017  +   17.04.2017
+Teicher             +   19.05.2017  +   22.05.2017
+Teicher             +   23.06.2017  +   26.06.2017
+Teicher             +   04.08.2017  +   07.08.2017
+Teicher             +   08.09.2017  +   11.09.2017
+Teicher             +   03.10.2017  +   03.10.2017
+Teicher             +   13.10.2017  +   16.10.2017
+Teicher             +   24.11.2017  +   27.11.2017
+
+Wagerer-Zoigl       +   13.01.2017  +   16.01.2017
+Wagerer-Zoigl       +   10.02.2017  +   13.02.2017
+Wagerer-Zoigl       +   10.03.2017  +   13.03.2017
+Wagerer-Zoigl       +   07.04.2017  +   10.04.2017
+Wagerer-Zoigl       +   19.05.2017  +   22.05.2017
+Wagerer-Zoigl       +   23.06.2017  +   26.06.2017
+Wagerer-Zoigl       +   14.07.2017  +   17.07.2017
+Wagerer-Zoigl       +   11.08.2017  +   14.08.2017
+Wagerer-Zoigl       +   15.09.2017  +   18.09.2017
+Wagerer-Zoigl       +   20.10.2017  +   23.10.2017
+Wagerer-Zoigl       +   17.11.2017  +   20.11.2017
+Wagerer-Zoigl       +   08.12.2017  +   11.12.2017
+
+Wolfadl             +   20.01.2017  +    23.01.2017
+Wolfadl             +   17.03.2017  +    20.03.2017
+Wolfadl             +   31.03.2017  +    03.04.2017
+Wolfadl             +   14.04.2017  +    17.04.2017
+Wolfadl             +   05.05.2017  +    08.05.2017
+Wolfadl             +   25.05.2017  +    25.05.2017
+Wolfadl             +   09.06.2017  +    12.06.2017
+Wolfadl             +   23.06.2017  +    26.06.2017
+Wolfadl             +   21.07.2017  +    24.07.2017
+Wolfadl             +   04.08.2017  +    07.08.2017
+Wolfadl             +   18.08.2017  +    21.08.2017
+Wolfadl             +   01.09.2017  +    04.09.2017
+Wolfadl             +   29.09.2017  +    03.10.2017
+Wolfadl             +   20.10.2017  +    23.10.2017
+Wolfadl             +   10.11.2017  +    13.11.2017
+Wolfadl             +   15.12.2017  +    18.12.2017
+Wolfadl             +   27.12.2017  +    30.12.2017
+
+Wolframstub'n       +   13.01.2017  +   15.01.2017  
+Wolframstub'n       +   10.02.2017  +   12.02.2017
+Wolframstub'n       +   03.03.2017  +   05.03.2017  
+Wolframstub'n       +   07.04.2017  +   09.04.2017
+Wolframstub'n       +   05.05.2017  +   07.05.2017
+Wolframstub'n       +   04.06.2017  +   05.06.2017
+Wolframstub'n       +   09.06.2017  +   11.06.2017
+Wolframstub'n       +   15.06.2017  +   15.06.2017
+Wolframstub'n       +   30.06.2017  +   02.07.2017
+Wolframstub'n       +   11.08.2017  +   13.08.2017
+Wolframstub'n       +   08.09.2017  +   10.09.2017
+Wolframstub'n       +   06.10.2017  +   08.10.2017
+Wolframstub'n       +   27.10.2017  +   28.10.2017
+Wolframstub'n       +   10.11.2017  +   12.11.2017
+
+Zoiglbauer          +   17.01.2017  +   21.01.2017
+Zoiglbauer          +   25.02.2017  +   25.02.2017
+Zoiglbauer          +   28.03.2017  +   01.04.2017
+Zoiglbauer          +   18.04.2017  +   22.04.2017
+Zoiglbauer          +   09.05.2017  +   13.05.2017
+Zoiglbauer          +   06.06.2017  +   10.06.2017
+Zoiglbauer          +   11.07.2017  +   15.07.2017
+Zoiglbauer          +   01.08.2017  +   05.08.2017
+Zoiglbauer          +   15.08.2017  +   19.08.2017
+Zoiglbauer          +   19.09.2017  +   23.09.2017
+Zoiglbauer          +   07.11.2017  +   11.11.2017
+Zoiglbauer          +   09.12.2017  +   09.12.2017
+Zoiglbauer          +   26.12.2017  +   30.12.2017
+
+Zoigl Hohenthan     +   20.01.2017  +   23.01.2017
+Zoigl Hohenthan     +   17.02.2017  +   20.02.2017
+Zoigl Hohenthan     +   10.03.2017  +   13.03.2017
+Zoigl Hohenthan     +   24.03.2017  +   27.03.2017
+Zoigl Hohenthan     +   14.04.2017  +   17.04.2017
+Zoigl Hohenthan     +   05.05.2017  +   08.05.2017
+Zoigl Hohenthan     +   19.05.2017  +   22.05.2017
+Zoigl Hohenthan     +   16.06.2017  +   19.06.2017
+Zoigl Hohenthan     +   01.09.2017  +   04.09.2017
+Zoigl Hohenthan     +   15.09.2017  +   18.09.2017
+Zoigl Hohenthan     +   29.09.2017  +   02.10.2017
+Zoigl Hohenthan     +   13.10.2017  +   16.10.2017
+Zoigl Hohenthan     +   27.10.2017  +   30.10.2017
+Zoigl Hohenthan     +   10.11.2017  +   13.11.2017
+Zoigl Hohenthan     +   01.12.2017  +   04.12.2017
+Zoigl Hohenthan     +   28.12.2017  +   29.12.2017
+
+Zum Binnerlindl     +   20.01.2017	     +      22.01.2017
+Zum Binnerlindl     +   24.02.2017	     +      26.02.2017
+Zum Binnerlindl     +   28.02.2017       +      28.02.2017
+Zum Binnerlindl     +   24.03.2017	     +      26.03.2017
+Zum Binnerlindl     +   21.04.2017	     +      23.04.2017
+Zum Binnerlindl     +   19.05.2017	     +      21.05.2017
+Zum Binnerlindl     +   16.06.2017	     +      18.06.2017
+Zum Binnerlindl     +   21.07.2017	     +      23.07.2017
+Zum Binnerlindl     +   11.08.2017	     +      13.08.2017
+Zum Binnerlindl     +   08.09.2017	     +      10.09.2017
+Zum Binnerlindl     +   06.10.2017	     +      08.10.2017
+Zum Binnerlindl     +   10.11.2017	     +      12.11.2017
+Zum Binnerlindl     +   08.12.2017	     +      10.12.2017
+
+Zum Boderfuchs      +   20.01.2017    +       23.01.2017 
+Zum Boderfuchs      +   17.02.2017    +       20.02.2017 
+Zum Boderfuchs      +   17.03.2017    +       20.03.2017 
+Zum Boderfuchs      +   21.04.2017    +       24.04.2017 
+Zum Boderfuchs      +   19.05.2017    +       22.05.2017 
+Zum Boderfuchs      +   16.06.2017    +       19.06.2017 
+Zum Boderfuchs      +   21.07.2017    +       24.07.2017 
+Zum Boderfuchs      +   18.08.2017    +       21.08.2017 
+Zum Boderfuchs      +   22.09.2017    +       25.09.2017 
+Zum Boderfuchs      +   20.10.2017    +       23.10.2017 
+Zum Boderfuchs      +   17.11.2017    +       20.11.2017 
+Zum Boderfuchs      +   27.12.2017    +       30.12.2017 
+
+Zum Glöckerlbauer   +   13.01.2017  +   15.01.2017
+Zum Glöckerlbauer   +   10.02.2017  +   12.01.2017
+Zum Glöckerlbauer   +   11.02.2017  +   11.02.2017
+Zum Glöckerlbauer   +   10.03.2017  +   12.03.2017
+Zum Glöckerlbauer   +   07.04.2017  +   09.04.2017
+Zum Glöckerlbauer   +   05.05.2017  +   07.05.2017
+Zum Glöckerlbauer   +   19.05.2017  +   19.05.2017
+Zum Glöckerlbauer   +   25.05.2017  +   25.05.2017
+Zum Glöckerlbauer   +   16.06.2017  +   18.06.2017
+Zum Glöckerlbauer   +   07.07.2017  +   09.07.2017
+Zum Glöckerlbauer   +   04.08.2017  +   06.08.2017
+Zum Glöckerlbauer   +   08.09.2017  +   10.09.2017
+Zum Glöckerlbauer   +   13.10.2017  +   15.10.2017
+Zum Glöckerlbauer   +   10.11.2017  +   12.11.2017
+Zum Glöckerlbauer   +   08.12.2017  +   10.12.2017
+
+Zum Gogerer         +   27.01.2017  +   03.02.2017
+Zum Gogerer         +   17.02.2017  +   24.02.2017
+Zum Gogerer         +   17.03.2017  +   24.03.2017
+Zum Gogerer         +   14.04.2017  +   21.04.2017
+Zum Gogerer         +   25.05.2017  +   02.06.2017
+Zum Gogerer         +   23.06.2017  +   30.06.2017
+Zum Gogerer         +   21.07.2017  +   28.07.2017
+Zum Gogerer         +   18.08.2017  +   27.08.2017
+Zum Gogerer         +   22.09.2017  +   29.09.2017
+Zum Gogerer         +   27.10.2017  +   03.11.2017
+Zum Gogerer         +   24.11.2017  +   01.12.2017
+Zum Gogerer         +   26.12.2017  +   30.12.2017
+
+Zum Helm            +   06.01.2017  +   09.01.2017
+Zum Helm            +   03.02.2017  +   06.02.2017
+Zum Helm            +   03.03.2017  +   06.03.2017
+Zum Helm            +   31.03.2017  +   03.04.2017
+Zum Helm            +   28.04.2017  +   01.05.2017
+Zum Helm            +   19.05.2017  +   22.05.2017
+Zum Helm            +   09.06.2017  +   12.06.2017
+Zum Helm            +   30.06.2017  +   03.07.2017
+Zum Helm            +   21.07.2017  +   24.07.2017
+Zum Helm            +   11.08.2017  +   14.08.2017
+Zum Helm            +   01.09.2017  +   04.09.2017
+Zum Helm            +   22.09.2017  +   25.09.2017
+Zum Helm            +   13.10.2017  +   16.10.2017
+Zum Helm            +   03.11.2017  +   06.11.2017
+Zum Helm            +   08.12.2017  +   11.12.2017
+
+Zum Mundl           +   06.01.2017  +   09.01.2017
+Zum Mundl           +   10.02.2017  +   13.02.2017
+Zum Mundl           +   10.03.2017  +   13.03.2017
+Zum Mundl           +   07.04.2017  +   10.04.2017
+Zum Mundl           +   12.05.2017  +   15.05.2017
+Zum Mundl           +   25.05.2017  +   25.05.2017
+Zum Mundl           +   02.06.2017  +   05.06.2017
+Zum Mundl           +   21.07.2017  +   24.07.2017
+Zum Mundl           +   18.08.2017  +   21.08.2017
+Zum Mundl           +   08.09.2017  +   11.09.2017
+Zum Mundl           +   20.10.2017  +   23.10.2017
+Zum Mundl           +   24.11.2017  +   27.11.2017
+
+Zum Posterer        +   20.01.2017  +  23.01.2017
+Zum Posterer        +   17.02.2017  +  20.02.2017
+Zum Posterer        +   03.03.2017  +  06.03.2017
+Zum Posterer        +   31.03.2017  +  03.04.2017
+Zum Posterer        +   19.05.2017  +  23.05.2017
+Zum Posterer        +   23.06.2017  +  26.06.2017
+Zum Posterer        +   14.07.2017  +  17.07.2017
+Zum Posterer        +   18.08.2017  +  21.08.2017
+Zum Posterer        +   22.09.2017  +  25.09.2017
+Zum Posterer        +   20.10.2017  +  23.10.2017
+Zum Posterer        +   03.11.2017  +  06.11.2017
+Zum Posterer        +   01.12.2017  +  04.12.2017
+
+Zum Rechersimer     +   06.01.2017  +   09.01.2017
+Zum Rechersimer     +   03.02.2017  +   06.02.2017
+Zum Rechersimer     +   24.02.2017  +   27.02.2017
+Zum Rechersimer     +   10.03.2017  +   13.03.2017
+Zum Rechersimer     +   07.04.2017  +   10.04.2017
+Zum Rechersimer     +   28.04.2017  +   01.05.2017
+Zum Rechersimer     +   09.06.2017  +   12.06.2017
+Zum Rechersimer     +   30.06.2017  +   03.07.2017
+Zum Rechersimer     +   28.07.2017  +   31.07.2017
+Zum Rechersimer     +   11.08.2017  +   14.08.2017
+Zum Rechersimer     +   01.09.2017  +   04.09.2017
+Zum Rechersimer     +   22.09.2017  +   25.09.2017
+Zum Rechersimer     +   20.10.2017  +   23.10.2017
+Zum Rechersimer     +   03.11.2017  +   06.11.2017
+Zum Rechersimer     +   24.11.2017  +   27.11.2017
+Zum Rechersimer     +   15.12.2017  +   18.12.2017
+
+Zum Roud'n          +   13.01.2017  +   16.01.2017
+Zum Roud'n          +   10.02.2017  +   13.02.2017
+Zum Roud'n          +   10.03.2017  +   13.03.2017
+Zum Roud'n          +   07.04.2017  +   10.04.2017
+Zum Roud'n          +   05.05.2017  +   08.05.2017
+Zum Roud'n          +   02.06.2017  +   05.06.2017
+Zum Roud'n          +   07.07.2017  +   10.07.2017
+Zum Roud'n          +   11.08.2017  +   14.08.2017
+Zum Roud'n          +   08.09.2017  +   11.09.2017
+Zum Roud'n          +   13.10.2017  +   16.10.2017
+Zum Roud'n          +   10.11.2017  +   13.11.2017
+Zum Roud'n          +   01.12.2017  +   04.12.2017
+
+Zum Sprea'n         +   14.01.2017  +   14.01.2017
+Zum Sprea'n         +   27.01.2017  +   30.01.2017
+Zum Sprea'n         +   03.02.2017  +   03.02.2017
+Zum Sprea'n         +   17.02.2017  +   20.02.2017
+Zum Sprea'n         +   28.02.2017  +   28.02.2017
+Zum Sprea'n         +   24.03.2017  +   27.03.2017
+Zum Sprea'n         +   21.04.2017  +   24.04.2017
+Zum Sprea'n         +   19.05.2017  +   22.05.2017
+Zum Sprea'n         +   23.06.2017  +   26.06.2017
+Zum Sprea'n         +   21.07.2017  +   24.07.2017
+Zum Sprea'n         +   25.08.2017  +   28.08.2017
+Zum Sprea'n         +   15.09.2017  +   18.09.2017
+Zum Sprea'n         +   13.10.2017  +   16.10.2017
+Zum Sprea'n         +   17.11.2017  +   20.11.2017
+Zum Sprea'n         +   27.12.2017  +   30.12.2017
+
+Zum Stich'n         +   
+
+Zum Vinzenz         +   05.01.2017  +   09.01.2017
+Zum Vinzenz         +   02.02.2017  +   06.02.2017
+Zum Vinzenz         +   23.02.2017  +   23.02.2017
+Zum Vinzenz         +   28.02.2017  +   28.02.2017
+Zum Vinzenz         +   16.03.2017  +   20.03.2017
+Zum Vinzenz         +   20.04.2017  +   24.04.2017
+Zum Vinzenz         +   11.05.2017  +   15.05.2017
+Zum Vinzenz         +   25.05.2017  +   25.05.2017
+Zum Vinzenz         +   08.06.2017  +   12.06.2017
+Zum Vinzenz         +   06.07.2017  +   10.07.2017
+Zum Vinzenz         +   03.08.2017  +   07.08.2017
+Zum Vinzenz         +   31.08.2017  +   04.09.2017
+Zum Vinzenz         +   28.09.2017  +   02.10.2017
+Zum Vinzenz         +   26.10.2017  +   30.10.2017
+Zum Vinzenz         +   23.11.2017  +   27.11.2017
+
+Zum Waldhauser      +   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
