@@ -4,7 +4,7 @@
 
     <!--        STRINGS IN CODE         -->
     <string name="echterZoigl">Echter Zoigl vom Kommunbrauer</string>
-    <string name="connectionException">Bitte mit dem Internet verbinden und erneut laden</string>
+    <string name="connectionException">Inhalt konnte nicht aktualisiert werden; Internetverbindung überprüfen</string>
     <string name="sendReviewSuccess">Bewertung wurde erfolgreich an den Server gesendet</string>
     <string name="sendReviewFail">Bewertung konnte nicht an den Server gesendet werden</string>
     <string name="dialog_review_title">Rezension verfassen</string>

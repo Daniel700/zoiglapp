@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,8 +15,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,7 @@ import model.Tavern;
 
 public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
+    @BindView(R.id.linear_layout_taverns)   LinearLayout linearLayout;
     @BindView(R.id.swipe_refresh_taverns)   SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.recycler_view_taverns)   RecyclerView recyclerView;
     @BindView(R.id.progressBar_tavernList)  ProgressBar progressBar;
@@ -122,7 +124,9 @@ public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
             if (error != null){
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(getContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(false);
+                recyclerView.setVisibility(View.VISIBLE);
+                Snackbar.make(linearLayout, getString(R.string.connectionException), Snackbar.LENGTH_LONG).show();
             }
             else{
                 progressBar.setVisibility(View.GONE);

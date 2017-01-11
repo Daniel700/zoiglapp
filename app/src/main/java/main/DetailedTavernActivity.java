@@ -19,7 +19,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -117,8 +116,10 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
 
     @Override
     public void sendRequestCode(int requestCode) {
-        if (requestCode == 1)
+        if (requestCode == 1){
             Snackbar.make(coordinatorLayout, getString(R.string.sendReviewSuccess), Snackbar.LENGTH_LONG).show();
+            new LoadReviewsTask().execute();
+        }
         if (requestCode == 400)
             Snackbar.make(coordinatorLayout, getString(R.string.sendReviewFail), Snackbar.LENGTH_LONG).show();
     }
@@ -194,9 +195,12 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if (error != null)
-                Toast.makeText(getApplicationContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
-            else{
+            if (error != null) {
+                progressBar.setVisibility(View.GONE);
+                swipeRefreshLayout.setRefreshing(false);
+                Snackbar.make(coordinatorLayout, getString(R.string.connectionException), Snackbar.LENGTH_LONG).show();
+            }
+            else {
                 progressBar.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
                 recyclerView.setVisibility(View.VISIBLE);

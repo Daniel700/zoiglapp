@@ -3,6 +3,7 @@ package view;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,9 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -42,6 +43,7 @@ import model.OpeningDate;
 
 public class CalendarFragment extends Fragment implements AdapterView.OnItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
+    @BindView(R.id.linear_layout_calendar)  LinearLayout linearLayout;
     @BindView(R.id.swipe_refresh_calendar)  SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.recycler_view_calendar)  RecyclerView recyclerView;
     @BindView(R.id.fab_refresh_calendar)    FloatingActionButton fab;
@@ -252,7 +254,9 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
             super.onPostExecute(aVoid);
             if (error != null){
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(getContext(), getString(R.string.connectionException), Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(false);
+                recyclerView.setVisibility(View.VISIBLE);
+                Snackbar.make(linearLayout, getString(R.string.connectionException), Snackbar.LENGTH_LONG).show();
             }
             else {
                 progressBar.setVisibility(View.GONE);
