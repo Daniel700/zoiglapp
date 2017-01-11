@@ -4,6 +4,7 @@ package dynamoTest;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,16 +45,17 @@ public class DatabaseTest {
             reader.readLine();
             reader.readLine();
 
+            int count = 3;
             String tmp;
             while ((tmp = reader.readLine()) != null){
                 String parts[] = tmp.split("\\+");
-
+                Log.e("LINE", String.valueOf(count) + parts[0].trim());
                 if (parts.length > 0) {
                     Tavern tavern = new Tavern(parts[0].trim(),parts[1].trim(),Integer.valueOf(parts[2].trim()),parts[3].trim(),parts[4].trim(),
                                 Boolean.valueOf(parts[5].trim()),parts[6].trim(),parts[7].trim(),parts[8].trim(),parts[9].trim(),parts[10].trim());
                     taverns.add(tavern);
                 }
-
+                count++;
             }
 
             handler.saveTaverns(taverns);
