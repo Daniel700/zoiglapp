@@ -1,4 +1,4 @@
-package main;
+package dbm.zoigl_kalender;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +12,8 @@ import java.util.TimeZone;
 import adapter.ImplPagerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import main.zoiglKalender.R;
+
+
 
 public class LauncherActivity extends AppCompatActivity {
 

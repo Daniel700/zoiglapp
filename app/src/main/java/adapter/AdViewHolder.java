@@ -7,7 +7,8 @@ import com.google.android.gms.ads.AdView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import main.zoiglKalender.R;
+import dbm.zoigl_kalender.R;
+
 
 /**
  * Created by Daniel on 07.01.2017.

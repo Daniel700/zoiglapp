@@ -11,7 +11,7 @@ import com.google.android.gms.ads.AdRequest;
 
 import java.util.ArrayList;
 
-import main.zoiglKalender.R;
+import dbm.zoigl_kalender.R;
 import model.Tavern;
 
 import static misc.Constants.AD_POSITION;

@@ -34,7 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import main.zoiglKalender.R;
+import dbm.zoigl_kalender.R;
 import misc.Settings;
 import model.DataHolder;
 import model.DatabaseHandler;

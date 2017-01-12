@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import main.zoiglKalender.R;
+import dbm.zoigl_kalender.R;
 import model.Review;
 
 /**

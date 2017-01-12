@@ -74,10 +74,9 @@
             android:layout_marginBottom="5dp"
             android:layout_gravity="center"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="Echter Zoigl vom Kommunbrauer" />
 
-
     </LinearLayout>
-
 
 </android.support.v7.widget.CardView>

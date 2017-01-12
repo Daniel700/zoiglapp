@@ -11,8 +11,10 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import main.DetailedTavernActivity;
-import main.zoiglKalender.R;
+
+import dbm.zoigl_kalender.DetailedTavernActivity;
+import dbm.zoigl_kalender.R;
+
 
 /**
  * Created by Daniel on 11.01.2017.

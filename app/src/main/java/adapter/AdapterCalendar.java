@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import main.zoiglKalender.R;
+import dbm.zoigl_kalender.R;
 import misc.Constants;
 import model.DataHolder;
 import model.OpeningDate;

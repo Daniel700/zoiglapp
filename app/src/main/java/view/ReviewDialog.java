@@ -23,8 +23,9 @@ import adapter.RatingChangedListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import main.DetailedTavernActivity;
-import main.zoiglKalender.R;
+
+import dbm.zoigl_kalender.DetailedTavernActivity;
+import dbm.zoigl_kalender.R;
 import model.DatabaseHandler;
 import model.Review;
 import model.Tavern;

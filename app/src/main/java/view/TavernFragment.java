@@ -24,7 +24,7 @@ import adapter.AdapterTaverns;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import main.zoiglKalender.R;
+import dbm.zoigl_kalender.R;
 import model.DatabaseHandler;
 import model.Tavern;
 

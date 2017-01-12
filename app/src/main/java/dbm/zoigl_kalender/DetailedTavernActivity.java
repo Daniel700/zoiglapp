@@ -1,4 +1,4 @@
-package main;
+package dbm.zoigl_kalender;
 
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -29,7 +29,6 @@ import adapter.RatingChangedListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import main.zoiglKalender.R;
 import model.DatabaseHandler;
 import model.Review;
 import model.Tavern;
