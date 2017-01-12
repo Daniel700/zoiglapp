@@ -2,6 +2,7 @@ package model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.amazonaws.auth.CognitoCachingCredentialsProvider;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBMapper;
@@ -17,6 +18,7 @@ import com.amazonaws.services.dynamodbv2.model.Condition;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import misc.Settings;
 
@@ -30,6 +32,7 @@ public class DatabaseHandler {
 
     private DynamoDBMapper mapper;
     private Context context;
+    private static final int PROVISIONED_WRITE_CAPACITY = 22;
 
     public DatabaseHandler(Context ctx){
         context = ctx;
@@ -163,6 +166,23 @@ public class DatabaseHandler {
 
 
     public void saveOpeningDates(ArrayList<OpeningDate> list){
+        int startPosition = 0;
+        //Save only so many items as the maximum provisioned write capacity per second!
+        Log.e("START SIZE", String.valueOf(list.size()));
+        while (list.size() > PROVISIONED_WRITE_CAPACITY){
+            List<OpeningDate> subList = list.subList(startPosition, PROVISIONED_WRITE_CAPACITY);
+            mapper.batchSave(subList);
+            list.subList(startPosition, PROVISIONED_WRITE_CAPACITY-1).clear();
+
+            try {
+                Thread.sleep(1500);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            Log.e("SIZE OF CALENDAR", String.valueOf(list.size()));
+        }
+        Log.e("LAST SIZE", String.valueOf(list.size()));
         mapper.batchSave(list);
     }
 

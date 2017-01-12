@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by Daniel on 02.01.2017.
  */
 
-@DynamoDBTable(tableName = "openingDates")
+@DynamoDBTable(tableName = "calendar")
 public class OpeningDate implements Comparable<OpeningDate> {
 
     @DynamoDBHashKey

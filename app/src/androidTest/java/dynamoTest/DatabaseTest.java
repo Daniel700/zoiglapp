@@ -48,14 +48,16 @@ public class DatabaseTest {
             int count = 3;
             String tmp;
             while ((tmp = reader.readLine()) != null){
-                String parts[] = tmp.split("\\+");
-                Log.e("LINE", String.valueOf(count) + parts[0].trim());
-                if (parts.length > 0) {
-                    Tavern tavern = new Tavern(parts[0].trim(),parts[1].trim(),Integer.valueOf(parts[2].trim()),parts[3].trim(),parts[4].trim(),
+                if (tmp.length() > 0 ) {
+                    String parts[] = tmp.split("\\+");
+                    Log.e("LINE", String.valueOf(count) + parts[0].trim());
+                    if (parts.length > 0) {
+                        Tavern tavern = new Tavern(parts[0].trim(),parts[1].trim(),Integer.valueOf(parts[2].trim()),parts[3].trim(),parts[4].trim(),
                                 Boolean.valueOf(parts[5].trim()),parts[6].trim(),parts[7].trim(),parts[8].trim(),parts[9].trim(),parts[10].trim());
-                    taverns.add(tavern);
+                        taverns.add(tavern);
+                    }
+                    count++;
                 }
-                count++;
             }
 
             handler.saveTaverns(taverns);
@@ -105,11 +107,9 @@ public class DatabaseTest {
                         openingDates.add(openingDate);
                     }
                 }
-
-                handler.saveOpeningDates(openingDates);
-
             }
 
+            handler.saveOpeningDates(openingDates);
         }
         catch (IOException e){
             e.printStackTrace();
