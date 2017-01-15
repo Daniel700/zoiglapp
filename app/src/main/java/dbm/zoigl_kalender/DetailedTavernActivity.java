@@ -1,6 +1,8 @@
 package dbm.zoigl_kalender;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -76,17 +82,18 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
             initToolbar();
             setContent();
         }
+        //Make the address look like a hyperlink
+        SpannableString spanStr = new SpannableString(textView_street.getText());
+        spanStr.setSpan(new UnderlineSpan(), 0, spanStr.length(), 0);
+        textView_street.setText(spanStr);
+        textView_street.setTextColor(textView_street.getLinkTextColors().getDefaultColor());
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         swipeRefreshLayout.setOnRefreshListener(this);
         new LoadReviewsTask().execute();
     }
 
-
-    @OnClick(R.id.detail_button_navigation)
-    public void startNavigation(){
-        //Snackbar.make(coordinatorLayout, "Action triggered", Snackbar.LENGTH_LONG).show();
-    }
 
 
     @OnClick(R.id.fab_review)
@@ -156,6 +163,20 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
         textView_website.setText(tavern.getUrl());
     }
 
+    @OnClick(R.id.detail_street)
+    public void openMaps(){
+        //Uri uri = Uri.parse("google.navigation:q=" + tavern.getStreet().replace(" ", "+") + "," + String.valueOf(tavern.getPostalCode()) + "+" + tavern.getCity().replace(" ", "+"));
+        Uri uri = Uri.parse("geo:0,0?q=" + tavern.getStreet().replace(" ", "+") + "," + String.valueOf(tavern.getPostalCode()) + "+" + tavern.getCity().replace(" ", "+"));
+        createIntentMap(uri);
+    }
+
+    public void createIntentMap(Uri geoLocation) {
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, geoLocation);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
+    }
 
 
     public Tavern getTavern(){

@@ -36,6 +36,11 @@ public class OpeningDate implements Comparable<OpeningDate> {
 
 
     @Override
+    public String toString() {
+        return this.id + " " + this.tavernName + " " + this.startDate.toString() + " " + this.endDate.toString();
+    }
+
+    @Override
     public int compareTo(OpeningDate another) {
         return this.getStartDate().compareTo(another.getStartDate());
     }

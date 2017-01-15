@@ -34,7 +34,13 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Context context;
 
     public AdapterCalendar(ArrayList<OpeningDate> dates){
-        this.calendarList = dates;
+        calendarList = new ArrayList<>();
+        for (int i = 0; i < dates.size(); i++){
+            if (i % AD_POSITION == 0)
+                calendarList.add(null);
+
+            calendarList.add(dates.get(i));
+        }
     }
 
 
@@ -57,7 +63,7 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == ITEM_TYPE_NORMAL){
 
-            OpeningDate event = calendarList.get(getRealPosition(position));
+            OpeningDate event = calendarList.get(position);
 
             //TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
             Calendar cal = Calendar.getInstance();
@@ -92,7 +98,7 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         }
         else if (getItemViewType(position) == ITEM_TYPE_AD){
-            AdRequest adRequest = new AdRequest.Builder().addTestDevice("2D18A580DC26C325F086D6FB9D84F765").build();
+            AdRequest adRequest = new AdRequest.Builder().build();
             ((AdViewHolder)holder).adView.loadAd(adRequest);
         }
     }
@@ -100,30 +106,16 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
-        int additionalContent = 0;
-        if (calendarList.size() > 0 && calendarList.size() > AD_POSITION) {
-            additionalContent = calendarList.size() / AD_POSITION;
-        }
-        return calendarList.size() + additionalContent;
+        return calendarList.size();
     }
 
 
     @Override
     public int getItemViewType(int position) {
-        if (position % AD_POSITION == 0 && position > 0){
+        if (calendarList.get(position) == null)
             return ITEM_TYPE_AD;
-        }
-        return ITEM_TYPE_NORMAL;
-    }
-
-
-    protected static int getRealPosition(int position) {
-        if (position % AD_POSITION != 0 && position > AD_POSITION){
-            return position - (position/AD_POSITION);
-        }
         else
-            return position;
+            return ITEM_TYPE_NORMAL;
     }
-
 
 }

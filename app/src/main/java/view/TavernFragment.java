@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,14 +18,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import adapter.AdapterTaverns;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dbm.zoigl_kalender.R;
+import model.DataHolder;
 import model.DatabaseHandler;
 import model.Tavern;
 
@@ -43,7 +50,7 @@ public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRef
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setHasOptionsMenu(true);
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -84,11 +91,25 @@ public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRef
         int id = item.getItemId();
         switch (id) {
             case R.id.menu_sort:
+                filterList();
                 return true;
         }
 
         return false;
     }
+
+
+    public void filterList(){
+
+        //ToDo show Dialog for Filter
+        ArrayList<Tavern> tavernCollection = new ArrayList<>(DataHolder.getInstance().getTavernHashMap().values());
+        Collections.sort(tavernCollection, Tavern.Comparators.RATING);
+
+        AdapterTaverns adapterTaverns = new AdapterTaverns(tavernCollection);
+        recyclerView.setAdapter(adapterTaverns);
+    }
+
+
 
 
 

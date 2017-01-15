@@ -6,6 +6,7 @@ import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBTable;
 import com.amazonaws.mobileconnectors.dynamodbv2.dynamodbmapper.DynamoDBVersionAttribute;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * Created by Daniel on 02.01.2017.
@@ -73,8 +74,36 @@ public class Tavern implements Comparable<Tavern>, Serializable {
 
     @Override
     public int compareTo(Tavern tavern) {
-        return this.getName().compareTo(tavern.getName());
+        return Comparators.NAME.compare(this, tavern);
     }
+
+
+    public static class Comparators {
+
+        public static Comparator<Tavern> NAME = new Comparator<Tavern>() {
+            @Override
+            public int compare(Tavern o1, Tavern o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+        public static Comparator<Tavern> RATING = new Comparator<Tavern>() {
+            @Override
+            public int compare(Tavern o1, Tavern o2) {
+                return Float.compare(o2.getRating(), o1.getRating());
+            }
+        };
+        public static Comparator<Tavern> RATING_COUNT = new Comparator<Tavern>() {
+            @Override
+            public int compare(Tavern o1, Tavern o2) {
+                return Float.compare(o2.getRatingCount(), o1.getRatingCount());
+            }
+        };
+
+    }
+
+
+
+
 
 
 

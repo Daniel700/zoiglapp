@@ -11,7 +11,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
 import dbm.zoigl_kalender.DetailedTavernActivity;
 import dbm.zoigl_kalender.R;
 
@@ -39,7 +38,7 @@ public class TavernsViewHolder extends RecyclerView.ViewHolder {
     @OnClick(R.id.card_view_taverns)
     public void detailViewTavern(){
         Intent intent = new Intent(context, DetailedTavernActivity.class);
-        intent.putExtra("Tavern", AdapterTaverns.tavernList.get(AdapterTaverns.getRealPosition(getLayoutPosition())));
+        intent.putExtra("Tavern", AdapterTaverns.tavernList.get(getLayoutPosition()));
         context.startActivity(intent);
     }
 

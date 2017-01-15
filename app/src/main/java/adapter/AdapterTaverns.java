@@ -2,7 +2,6 @@ package adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,13 @@ public class AdapterTaverns extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private Context context;
 
     public AdapterTaverns(ArrayList<Tavern> taverns){
-        this.tavernList = taverns;
+        tavernList = new ArrayList<>();
+        for (int i = 0; i < taverns.size(); i++){
+            if (i % AD_POSITION == 0)
+                tavernList.add(null);
+
+            tavernList.add(taverns.get(i));
+        }
     }
 
     @Override
@@ -48,10 +53,9 @@ public class AdapterTaverns extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
         if (getItemViewType(position) == ITEM_TYPE_NORMAL) {
 
-            Tavern currentTavern = tavernList.get(getRealPosition(position));
+            Tavern currentTavern = tavernList.get(position);
             ((TavernsViewHolder)holder).name.setText(currentTavern.getName());
             ((TavernsViewHolder)holder).location.setText(currentTavern.getStreet() + ", " + String.valueOf(currentTavern.getPostalCode()) + " " + currentTavern.getCity());
             ((TavernsViewHolder)holder).ratingBar.setRating(currentTavern.getRating());
@@ -60,12 +64,10 @@ public class AdapterTaverns extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 ((TavernsViewHolder)holder).realZoigl.setText(context.getString(R.string.echterZoigl));
             else
                 ((TavernsViewHolder)holder).realZoigl.setText("");
-
         }
         else if (getItemViewType(position) == ITEM_TYPE_AD){
-            AdRequest adRequest = new AdRequest.Builder().addTestDevice("2D18A580DC26C325F086D6FB9D84F765").build();
+            AdRequest adRequest = new AdRequest.Builder().build();
             ((AdViewHolder)holder).adView.loadAd(adRequest);
-            Log.e("test", ((AdViewHolder)holder).adView.toString());
         }
 
     }
@@ -73,27 +75,16 @@ public class AdapterTaverns extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        int additionalContent = 0;
-        if (tavernList.size() > 0 && tavernList.size() > AD_POSITION) {
-            additionalContent = tavernList.size() / AD_POSITION;
-        }
-        return tavernList.size() + additionalContent;
+        return tavernList.size();
     }
+
 
     @Override
     public int getItemViewType(int position) {
-        if (position % AD_POSITION == 0 && position > 0){
+        if (tavernList.get(position) == null)
             return ITEM_TYPE_AD;
-        }
-        return ITEM_TYPE_NORMAL;
-    }
-
-    protected static int getRealPosition(int position) {
-        if (position % AD_POSITION != 0 && position > AD_POSITION){
-            return position - (position/AD_POSITION);
-        }
         else
-            return position;
+            return ITEM_TYPE_NORMAL;
     }
 
 }
