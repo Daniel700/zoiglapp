@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:padding="5dp"
+            android:text="Sortieren"/>
+    </FrameLayout>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <RadioButton
+            android:id="@+id/dialog_sort_rbName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name" />
+
+        <RadioButton
+            android:id="@+id/dialog_sort_rbRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bewertung" />
+
+        <RadioButton
+            android:id="@+id/dialog_sort_rbRatingCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Anzahl Bewertungen" />
+
+    </RadioGroup>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialog_sort_button_positive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:theme="@style/MaterialButtonPositive"
+            android:onClick="pressedButtonPositive"
+            android:text="OK" />
+
+        <Button
+            android:id="@+id/dialog_sort_button_negative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center"
+            android:theme="@style/MaterialButtonNegative"
+            android:onClick="pressedButtonNegative"
+            android:text="@string/dialog_button_negative" />
+    </LinearLayout>
+
+
+</LinearLayout>

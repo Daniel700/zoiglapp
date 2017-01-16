@@ -104,9 +104,6 @@
             android:layout_weight="0.5"
             android:onClick="pressedButtonNegative"
             android:text="@string/dialog_button_negative" />
-
-
     </LinearLayout>
-
 
 </LinearLayout>

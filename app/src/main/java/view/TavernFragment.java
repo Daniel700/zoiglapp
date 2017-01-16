@@ -6,10 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,15 +18,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 import adapter.AdapterTaverns;
+import adapter.SortChangedListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -39,7 +36,7 @@ import model.Tavern;
  * Created by Daniel on 05.01.2017.
  */
 
-public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener, SortChangedListener {
 
     @BindView(R.id.linear_layout_taverns)   LinearLayout linearLayout;
     @BindView(R.id.swipe_refresh_taverns)   SwipeRefreshLayout swipeRefreshLayout;
@@ -91,7 +88,10 @@ public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRef
         int id = item.getItemId();
         switch (id) {
             case R.id.menu_sort:
-                filterList();
+                FragmentManager fm = getFragmentManager();
+                SortDialog sortDialog = new SortDialog();
+                sortDialog.setTargetFragment(this, 0);
+                sortDialog.show(fm, "sort-dialog");
                 return true;
         }
 
@@ -99,15 +99,33 @@ public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
 
-    public void filterList(){
+    @Override
+    public void sendSortOption(int selectedItem) {
 
-        //ToDo show Dialog for Filter
-        ArrayList<Tavern> tavernCollection = new ArrayList<>(DataHolder.getInstance().getTavernHashMap().values());
-        Collections.sort(tavernCollection, Tavern.Comparators.RATING);
+        if (selectedItem == 1){
+            ArrayList<Tavern> tavernCollection = new ArrayList<>(DataHolder.getInstance().getTavernHashMap().values());
+            Collections.sort(tavernCollection, Tavern.Comparators.NAME);
 
-        AdapterTaverns adapterTaverns = new AdapterTaverns(tavernCollection);
-        recyclerView.setAdapter(adapterTaverns);
+            AdapterTaverns adapterTaverns = new AdapterTaverns(tavernCollection);
+            recyclerView.setAdapter(adapterTaverns);
+        }
+        if (selectedItem == 2){
+            ArrayList<Tavern> tavernCollection = new ArrayList<>(DataHolder.getInstance().getTavernHashMap().values());
+            Collections.sort(tavernCollection, Tavern.Comparators.RATING);
+
+            AdapterTaverns adapterTaverns = new AdapterTaverns(tavernCollection);
+            recyclerView.setAdapter(adapterTaverns);
+        }
+        if (selectedItem == 3){
+            ArrayList<Tavern> tavernCollection = new ArrayList<>(DataHolder.getInstance().getTavernHashMap().values());
+            Collections.sort(tavernCollection, Tavern.Comparators.RATING_COUNT);
+
+            AdapterTaverns adapterTaverns = new AdapterTaverns(tavernCollection);
+            recyclerView.setAdapter(adapterTaverns);
+        }
+
     }
+
 
 
 

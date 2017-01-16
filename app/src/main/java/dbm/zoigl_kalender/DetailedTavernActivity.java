@@ -26,6 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -154,7 +155,8 @@ public class DetailedTavernActivity extends AppCompatActivity implements Interfa
         SharedPreferences sharedPreferences = getSharedPreferences("InstallSettings", MODE_PRIVATE);
         float rating = sharedPreferences.getFloat(tavern.getName(), 0);
         ratingBarOwn.setRating(rating);
-        textView_ratingBarSum.setText("(" + Math.round(tavern.getRatingCount()) + ")");
+        DecimalFormat df = new DecimalFormat("0.00");
+        textView_ratingBarSum.setText("(" + df.format(tavern.getRating()) + " / " + Math.round(tavern.getRatingCount()) + ")");
         textView_hours.setText(tavern.getOpeningHours().replace("-", "\n"));
         textView_street.setText(tavern.getStreet() + ", " + String.valueOf(tavern.getPostalCode()) + " " + tavern.getCity());
         textView_person.setText(tavern.getOwner());

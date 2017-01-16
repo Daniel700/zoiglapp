@@ -12,10 +12,12 @@ import com.google.android.gms.ads.AdRequest;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 import dbm.zoigl_kalender.R;
 import misc.Constants;
+import misc.Settings;
 import model.DataHolder;
 import model.OpeningDate;
 import model.Tavern;
@@ -35,6 +37,7 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public AdapterCalendar(ArrayList<OpeningDate> dates){
         calendarList = new ArrayList<>();
+        Collections.sort(dates);
         for (int i = 0; i < dates.size(); i++){
             if (i % AD_POSITION == 0)
                 calendarList.add(null);
@@ -98,8 +101,14 @@ public class AdapterCalendar extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         }
         else if (getItemViewType(position) == ITEM_TYPE_AD){
-            AdRequest adRequest = new AdRequest.Builder().build();
-            ((AdViewHolder)holder).adView.loadAd(adRequest);
+            if (Settings.AD_MOB_PRODUCTION_MODE){
+                AdRequest adRequest = new AdRequest.Builder().build();
+                ((AdViewHolder)holder).adView.loadAd(adRequest);
+            }
+            else {
+                AdRequest adRequest = new AdRequest.Builder().addTestDevice("8CF4B5B17F64F9A1465E73166A097A93").build();
+                ((AdViewHolder)holder).adView.loadAd(adRequest);
+            }
         }
     }
 
