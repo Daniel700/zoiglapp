@@ -141,6 +141,7 @@ public class TavernFragment extends Fragment implements SwipeRefreshLayout.OnRef
             super.onPreExecute();
             recyclerView.setVisibility(View.GONE);
             progressBar.setVisibility(View.VISIBLE);
+            swipeRefreshLayout.setRefreshing(false);
         }
 
         @Override

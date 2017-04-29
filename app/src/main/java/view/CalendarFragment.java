@@ -19,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -67,7 +68,7 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
         unbinder = ButterKnife.bind(this, rootView);
-        loadInterstitialAd();
+        //loadInterstitialAd();
 
         DateFormat dateFormat = DateFormat.getDateInstance();
         textView_Date.setText(dateFormat.format(new Date()));
@@ -131,11 +132,13 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
     public void showActiveDates(){
         //show only currently opened taverns
         if (activeDatesCheckBox.isChecked()){
+            /*
             //Show interstitial Ad
             if (interstitialAd.isLoaded()) {
                 interstitialAd.show();
             }
             loadInterstitialAd();
+            */
 
             ArrayList<OpeningDate> calendar = DataHolder.getInstance().getCalendar();
             ArrayList<OpeningDate> openedCalendar = new ArrayList<>();
@@ -162,6 +165,9 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
         }
         else {
             getCalendarDataForMonth(position);
+
+            if (activeDatesCheckBox.isChecked())
+                activeDatesCheckBox.setChecked(false);
         }
     }
 
@@ -233,6 +239,7 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
             super.onPreExecute();
             recyclerView.setVisibility(View.GONE);
             progressBar.setVisibility(View.VISIBLE);
+            swipeRefreshLayout.setRefreshing(false);
         }
 
         @Override
@@ -263,10 +270,9 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
                 swipeRefreshLayout.setRefreshing(false);
                 recyclerView.setVisibility(View.VISIBLE);
 
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(new Date());
-                spinnerMonths.setSelection(cal.get(Calendar.MONTH));
+                showActiveDates();
 
+                /*
                 if (!showAd)
                     showAd = true;
                 else {
@@ -276,6 +282,7 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
                     }
                     loadInterstitialAd();
                 }
+                */
 
             }
 
@@ -286,7 +293,7 @@ public class CalendarFragment extends Fragment implements AdapterView.OnItemSele
 
     @OnClick(R.id.fab_refresh_calendar)
     public void refreshCalendarList(){
-        loadInterstitialAd();
+        //loadInterstitialAd();
         new FetchCalendarDataTask().execute();
     }
 
